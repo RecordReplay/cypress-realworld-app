@@ -88,6 +88,7 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
+          headless: true
           spec: cypress/tests/ui/*
 
   ui-chrome-mobile-tests:
@@ -122,6 +123,7 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
+          headless: true
           spec: cypress/tests/ui/*
 
   ui-firefox-tests:
@@ -157,6 +159,7 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: firefox
+          headless: true
           spec: cypress/tests/ui/*
 
   ui-firefox-mobile-tests:
@@ -193,6 +196,7 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: firefox
+          headless: true
           spec: cypress/tests/ui/*
 
   ui-windows-tests:
@@ -224,4 +228,5 @@ jobs:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
+          headless: true
           spec: cypress/tests/ui/*
