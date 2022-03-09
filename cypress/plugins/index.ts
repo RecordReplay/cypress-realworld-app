@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import Promise from "bluebird";
 import { percyHealthCheck } from "@percy/cypress/task";
 import codeCoverageTask from "@cypress/code-coverage/task";
+import { getExecutablePath } from "@recordreplay/puppeteer-config";
 
 dotenv.config({ path: ".env.local" });
 dotenv.config();
@@ -68,5 +69,16 @@ export default (on, config) => {
   });
 
   codeCoverageTask(on, config);
-  return config;
+  return {
+    ...config,
+    browsers: config.browsers.concat({
+      name: 'Replay',
+      channel: 'stable',
+      family: 'chromium',
+      displayName: 'Replay',
+      version: "v91",
+      path: getExecutablePath("chromium"),
+      majorVersion: 91,
+    })
+  };
 };
