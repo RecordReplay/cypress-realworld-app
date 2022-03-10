@@ -25,8 +25,6 @@
     "@okta/jwt-verifier": "2.3.0",
     "@okta/okta-auth-js": "4.9.2",
     "@okta/okta-react": "4.1.0",
-    "@recordreplay/cypress": "^9.2.4",
-    "@recordreplay/puppeteer-config": "^0.1.2",
     "@xstate/react": "1.6.3",
     "aws-amplify": "4.3.10",
     "axios": "0.24.0",
