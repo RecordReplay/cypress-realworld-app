@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import Promise from "bluebird";
 import { percyHealthCheck } from "@percy/cypress/task";
 import codeCoverageTask from "@cypress/code-coverage/task";
-import cypressReplay from "@recordreplay/cypress-replay";
+import cypressReplay from "@replayio/cypress";
 
 dotenv.config({ path: ".env.local" });
 dotenv.config();
