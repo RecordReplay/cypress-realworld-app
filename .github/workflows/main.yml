@@ -57,6 +57,8 @@ jobs:
           name: build
           path: build
 
+      - run: su -c apt-get install uuid-runtime
+
       - name: Cypress info
         run: npx cypress info
 
