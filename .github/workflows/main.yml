@@ -67,7 +67,7 @@ jobs:
         run: ls /__e
       
       - name: Start wait
-        run: wait-on http://localhost:3000
+        run: yarn test:e2e:wait
       
       - name: Start server
         run: yarn start:ci
