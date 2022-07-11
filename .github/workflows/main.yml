@@ -67,7 +67,7 @@ jobs:
         run: ls /__e
 
       - name: "UI Tests - Chrome"
-        uses: replayio/action-cypress@main
+        uses: replayio/action-cypress@ryan/bac-1921-generating-test-run-id-in-action-cypress
         with:
           command: npm run test:e2e -- --
           browser: "Replay Chromium"
