@@ -3,6 +3,10 @@ name: PR Cypress Tests
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: Browser to use
 
 jobs:
   install:
@@ -34,7 +38,7 @@ jobs:
           if-no-files-found: error
           path: build
 
-  ui-chrome-tests:
+  ui-tests:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
@@ -66,12 +70,16 @@ jobs:
       - name: __e Dir
         run: ls /__e
 
-      - name: "UI Tests - Chrome"
-        uses: replayio/action-cypress@v0.1.4
+      - name: "UI Tests"
+        uses: replayio/action-cypress@main
         with:
           command: npm run test:e2e -- --
-          browser: "Replay Chromium"
+          browser: "Replay Firefox"
           apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
           public: true
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ github.event.pull_request.number || null }}
           upload-all: true
+
+      - run: npx @replayio/replay ls --all
+        if: ${{ always() }}
+        shell: bash

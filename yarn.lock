@@ -3992,28 +3992,30 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-0.2.2.tgz#011bfb36ac98270d8b9c1a8b38d52938533b8bbf"
-  integrity sha512-4puJRKqJWn5+XBvetNDuCdpPFUFD4ZI5itdR9/nOwBy4PtMItPPH4S80yxvJev3JROX5pbm1LJzceqSHG0lk7Q==
+"@replayio/cypress@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-0.2.7.tgz#025a6c186e7a860ba58a7fe7a415f5c8cd267ba2"
+  integrity sha512-83S+vab5QWDtZ07I2L73i063WHx+KcU19PtK5lP5mFLAQjgX9cocFnGjU5rVLvoYttmrc2Tj1NEt+uOOTgZs+g==
   dependencies:
-    "@replayio/replay" "^0.4.4"
+    "@replayio/replay" "^0.7.0"
+    uuid "^8.3.2"
 
-"@replayio/replay@^0.4.4":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.4.4.tgz#07b894ba239764d2394775c1293f20ad8bdf8d89"
-  integrity sha512-9/JqnwcAqHU1HbVyUXYuf0ZmsxFRQX2THfhbsK2C65LpSUJoII8cKJmLnmazxHf06DzK4aLtWGQAUGB9DqOmIg==
+"@replayio/replay@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.7.0.tgz#50ea5e6411af4879bfc06e2e3563b369d00e8df3"
+  integrity sha512-Pl578fBSFtKvnnm/l6Ix5XWnpglkDJm1oO6qE+i6pJlsHj7Braaj45QWhL34WAx74u6IVIXP90tmlo3unvLEOg==
   dependencies:
-    "@replayio/sourcemap-upload" "^1.0.1"
+    "@replayio/sourcemap-upload" "^1.0.2"
     commander "^7.2.0"
     is-uuid "^1.0.2"
     superstruct "^0.15.4"
+    text-table "^0.2.0"
     ws "^7.5.0"
 
-"@replayio/sourcemap-upload@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@replayio/sourcemap-upload/-/sourcemap-upload-1.0.1.tgz#f8fbfc89779a3c6aa668e1c3ba36a7366204a279"
-  integrity sha512-GWxXH4pU0QF2/UHSLkWljny/hx7x2VR6QBqYIVBQ++RsVd8B22Up32Q9s6/PpmTO+y01XdWpldupU5LuzvCcnQ==
+"@replayio/sourcemap-upload@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@replayio/sourcemap-upload/-/sourcemap-upload-1.0.2.tgz#59a5a1abe7d7f551b2c9683d3eb730a1bd6e153d"
+  integrity sha512-gsFKIjHW3IycC7g/uHH3PkECeZ2l+QugJ9lQxAiDlRoMVQg77CrAm6yciBTpdlodRsw97vrJWYJj8c5tNOIUZQ==
   dependencies:
     commander "^7.2.0"
     debug "^4.3.1"
