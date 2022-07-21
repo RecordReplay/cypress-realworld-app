@@ -70,6 +70,9 @@ jobs:
       - name: __e Dir
         run: ls /__e
 
+      - name: Install dependencies
+        run: yarn install
+
       - name: "UI Tests"
         uses: replayio/action-cypress@main
         with:
