@@ -152,7 +152,7 @@
     "precypress:open": "yarn predev:cognito:ci",
     "cypress:open": "cypress open",
     "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
-    "cypress:run": "cypress run",
+    "cypress:run": "RECORD_REPLAY_VERBOSE=1 DEBUG=cypress:* cypress run",
     "cypress:run:component": "cypress run --component",
     "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
     "test": "yarn cypress:open",
