@@ -1,5 +1,6 @@
 name: E2E Test
-
+env:
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20221231-e9016f403e43-088e58bdeb5c.tar.xz
 on: 
   schedule:
     - cron: '0 * * * *'
