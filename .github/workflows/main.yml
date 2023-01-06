@@ -1,5 +1,6 @@
 name: E2E Test
-
+env:
+  RECORD_REPLAY_CRASH_AT_WARNING: 1
 on: 
   schedule:
     - cron: '0 * * * *'
