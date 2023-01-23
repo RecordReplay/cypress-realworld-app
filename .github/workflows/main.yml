@@ -1,7 +1,7 @@
 name: E2E Test
 
 env:
-  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230123-a3b807614537-228943f6bda7.tar.xz
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230123-30f0c42d8c00-228943f6bda7.tar.xz
 
 on:
   schedule:
