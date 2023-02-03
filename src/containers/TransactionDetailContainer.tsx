@@ -20,6 +20,7 @@ const TransactionDetailsContainer: React.FC<Props> = ({ authService }) => {
   const [authState] = useActor(authService);
   const [transactionDetailState, sendTransactionDetail] = useMachine(transactionDetailMachine);
   useEffect(() => {
+    console.log("useEffect fetch call");
     sendTransactionDetail("FETCH", { transactionId });
   }, [sendTransactionDetail, transactionId]);
 
