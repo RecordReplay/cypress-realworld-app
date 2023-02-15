@@ -11,6 +11,10 @@
 # production
 /build
 
+# data files that are created by tests
+/duration.json
+/data/database.json
+
 # misc
 .DS_Store
 .idea
