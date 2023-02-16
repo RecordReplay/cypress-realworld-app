@@ -13,7 +13,8 @@
 
 # data files that are created by tests
 /duration.json
-/data/database.json
+# TODO: also get rid of database.json, since it changes between runs
+# /data/database.json
 
 # misc
 .DS_Store
