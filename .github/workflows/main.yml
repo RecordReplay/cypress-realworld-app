@@ -16,6 +16,7 @@ on:
 env:
   RECORD_REPLAY_FIREFOX_DOWNLOAD_FILE: ${{ github.event.inputs.firefox-runtime }}
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: ${{ github.event.inputs.chromium-runtime }}
+  RECORD_REPLAY_TEST_ENVIRONMENT: 1
 
 jobs:
   install:
@@ -95,6 +96,7 @@ jobs:
         env:
           # RECORD_REPLAY_JS_ASSERTS: 1
           RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_TEST_ENVIRONMENT: "1"
           RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
@@ -175,6 +177,7 @@ jobs:
         #   DEBUG: "cypress:server:args"
         env:
           RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_TEST_ENVIRONMENT: "1"
           RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
