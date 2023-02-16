@@ -16,7 +16,7 @@ on:
 env:
   RECORD_REPLAY_FIREFOX_DOWNLOAD_FILE: ${{ github.event.inputs.firefox-runtime }}
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: ${{ github.event.inputs.chromium-runtime }}
-  RECORD_REPLAY_DISABLE_FEATURES: disable-collect-events
+  RECORD_REPLAY_TEST_ENVIRONMENT: 1
 
 jobs:
   install:
