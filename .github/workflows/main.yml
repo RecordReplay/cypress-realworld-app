@@ -83,7 +83,7 @@ jobs:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: "Replay Chromium"
+          browser: replay-chromium
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         # env:
@@ -165,7 +165,7 @@ jobs:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: "Replay Chromium"
+          browser: replay-chromium
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         # env:
