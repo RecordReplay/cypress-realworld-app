@@ -2,6 +2,7 @@ name: E2E Test
 
 env:
   RECORD_REPLAY_DISABLE_FEATURES: record-replay
+  RECORD_REPLAY_DRIVER: /tmp/not-here
 
 on:
   schedule:
