@@ -1,8 +1,5 @@
 name: E2E Test
 
-env:
-  RECORD_REPLAY_DISABLE_FEATURES: record-replay
-
 on:
   schedule:
     - cron: "0 * * * *"
@@ -39,8 +36,170 @@ jobs:
           if-no-files-found: error
           path: build
 
-  record:
-    name: UI tests (record)
+  record1:
+    name: UI tests (record #1)
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node16.13.0-chrome95-ff94
+      options: --user 1001
+    needs: install
+    outputs:
+      recordDuration: ${{steps.end.outputs.recordDuration}}
+      uploadDuration: ${{steps.end.outputs.uploadDuration}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download the build folders
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+
+      - name: Cypress info
+        run: npx cypress info
+
+      - name: Node info
+        run: node -v
+
+      - name: __e Dir
+        run: ls /__e
+
+      - name: "UI Tests - Chrome"
+        uses: cypress-io/github-action@v4
+        with:
+          start: yarn start:ci
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+          browser: "Replay Chromium"
+          spec: cypress/tests/ui/*
+          config-file: cypress.config.js
+        # env:
+        #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        #   # Recommended: pass the GitHub token lets this action correctly
+        #   # determine the unique run id necessary to re-run the checks
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   DEBUG: "cypress:server:args"
+        env:
+          # RECORD_REPLAY_JS_ASSERTS: 1
+          RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
+          RECORD_ALL_CONTENT: 1
+          RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
+          # # These two are here to help with measuring the true overhead by disabling diagnostics
+          # RECORD_REPLAY_DISABLE_ASSERTS: 1
+          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+
+      - name: Parse test run duration
+        id: set_var
+        if: always()
+        run: |
+          content=`cat duration.json`
+          echo "::set-output name=duration::$content"
+
+      - name: Set upload start
+        if: always()
+        id: uploadStart
+        run: echo "time=`date +%s`" >> $GITHUB_OUTPUT
+
+      - name: Upload replays
+        if: ${{ always() }}
+        uses: replayio/action-upload@v0.4.7
+        with:
+          public: true
+          api-key: rwk_wayprCcrJi5pM4VNN0kWHkc1AUWfqFyS1musJwdqtC4
+
+      - name: Set duration in output
+        if: always()
+        id: end
+        run: |
+          echo "recordDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
+          echo "uploadDuration=$(((`date +%s` - ${{ steps.uploadStart.outputs.time }}) * 1000))" >> $GITHUB_OUTPUT
+
+  record2:
+    name: UI tests (record #2)
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node16.13.0-chrome95-ff94
+      options: --user 1001
+    needs: install
+    outputs:
+      recordDuration: ${{steps.end.outputs.recordDuration}}
+      uploadDuration: ${{steps.end.outputs.uploadDuration}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download the build folders
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+
+      - name: Cypress info
+        run: npx cypress info
+
+      - name: Node info
+        run: node -v
+
+      - name: __e Dir
+        run: ls /__e
+
+      - name: "UI Tests - Chrome"
+        uses: cypress-io/github-action@v4
+        with:
+          start: yarn start:ci
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+          browser: "Replay Chromium"
+          spec: cypress/tests/ui/*
+          config-file: cypress.config.js
+        # env:
+        #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        #   # Recommended: pass the GitHub token lets this action correctly
+        #   # determine the unique run id necessary to re-run the checks
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   DEBUG: "cypress:server:args"
+        env:
+          # RECORD_REPLAY_JS_ASSERTS: 1
+          RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
+          RECORD_ALL_CONTENT: 1
+          RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
+          # # These two are here to help with measuring the true overhead by disabling diagnostics
+          # RECORD_REPLAY_DISABLE_ASSERTS: 1
+          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+
+      - name: Parse test run duration
+        id: set_var
+        if: always()
+        run: |
+          content=`cat duration.json`
+          echo "::set-output name=duration::$content"
+
+      - name: Set upload start
+        if: always()
+        id: uploadStart
+        run: echo "time=`date +%s`" >> $GITHUB_OUTPUT
+
+      - name: Upload replays
+        if: ${{ always() }}
+        uses: replayio/action-upload@v0.4.7
+        with:
+          public: true
+          api-key: rwk_wayprCcrJi5pM4VNN0kWHkc1AUWfqFyS1musJwdqtC4
+
+      - name: Set duration in output
+        if: always()
+        id: end
+        run: |
+          echo "recordDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
+          echo "uploadDuration=$(((`date +%s` - ${{ steps.uploadStart.outputs.time }}) * 1000))" >> $GITHUB_OUTPUT
+
+  record3:
+    name: UI tests (record #3)
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node16.13.0-chrome95-ff94
