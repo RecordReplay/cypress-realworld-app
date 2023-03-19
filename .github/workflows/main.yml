@@ -1,5 +1,8 @@
 name: E2E Test
 
+env:
+  RECORD_REPLAY_DISABLE_FEATURES: record-replay
+
 on:
   schedule:
     - cron: "0 * * * *"
