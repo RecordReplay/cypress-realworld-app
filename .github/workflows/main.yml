@@ -36,7 +36,7 @@ jobs:
           if-no-files-found: error
           path: build
 
-  record1:
+  record:
     name: UI tests (record #1)
     runs-on: ubuntu-latest
     container:
