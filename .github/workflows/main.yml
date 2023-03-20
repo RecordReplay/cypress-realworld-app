@@ -1,7 +1,7 @@
 name: E2E Test
 
 env:
-  RECORD_REPLAY_DISABLE_FEATURES: gc-changes,leak-references,disallow-events,avoid-weak-pointers,pass-through-events,register-scripts,emit-opcodes
+  RECORD_REPLAY_DISABLE_FEATURES: gc-changes,leak-references,disallow-events,avoid-weak-pointers,pass-through-events,register-scripts
 
 on:
   schedule:
