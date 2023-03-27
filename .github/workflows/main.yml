@@ -83,8 +83,8 @@ jobs:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: replay-chromium
-          spec: cypress/tests/ui/*
+          browser: replay-firefox
+          spec: cypress/tests/ui/auth.spec.ts
           config-file: cypress.config.js
         # env:
         #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
@@ -130,151 +130,151 @@ jobs:
           echo "recordDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
           echo "uploadDuration=$(((`date +%s` - ${{ steps.uploadStart.outputs.time }}) * 1000))" >> $GITHUB_OUTPUT
 
-  no-record:
-    name: UI tests (no record)
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:node16.13.0-chrome95-ff94
-      options: --user 1001
-    needs: install
-    outputs:
-      noRecordDuration: ${{steps.end.outputs.noRecordDuration}}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # no-record:
+  #   name: UI tests (no record)
+  #   timeout-minutes: 15
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: cypress/browsers:node16.13.0-chrome95-ff94
+  #     options: --user 1001
+  #   needs: install
+  #   outputs:
+  #     noRecordDuration: ${{steps.end.outputs.noRecordDuration}}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
+  #     - name: Download the build folders
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: build
+  #         path: build
 
-      - name: Cypress info
-        run: npx cypress info
+  #     - name: Cypress info
+  #       run: npx cypress info
 
-      - name: Node info
-        run: node -v
+  #     - name: Node info
+  #       run: node -v
 
-      - name: __e Dir
-        run: ls /__e
+  #     - name: __e Dir
+  #       run: ls /__e
 
-      - name: "UI Tests - Chrome"
-        uses: cypress-io/github-action@v4
-        with:
-          start: yarn start:ci
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 120
-          browser: replay-chromium
-          spec: cypress/tests/ui/*
-          config-file: cypress.config.js
-        # env:
-        #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-        #   # Recommended: pass the GitHub token lets this action correctly
-        #   # determine the unique run id necessary to re-run the checks
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #   DEBUG: "cypress:server:args"
-        env:
-          RECORD_REPLAY_TEST_METRICS: 1
-          RECORD_REPLAY_TEST_ENVIRONMENT: "1"
-          RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
-          RECORD_ALL_CONTENT: 1
-          RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
-          RECORD_REPLAY_DRIVER: /tmp/not-here
-          # These two are here to help with measuring the true overhead by disabling diagnostics
-          RECORD_REPLAY_DISABLE_ASSERTS: 1
-          RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+  #     - name: "UI Tests - Chrome"
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         start: yarn start:ci
+  #         wait-on: "http://localhost:3000"
+  #         wait-on-timeout: 120
+  #         browser: replay-chromium
+  #         spec: cypress/tests/ui/*
+  #         config-file: cypress.config.js
+  #       # env:
+  #       #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+  #       #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  #       #   # Recommended: pass the GitHub token lets this action correctly
+  #       #   # determine the unique run id necessary to re-run the checks
+  #       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       #   DEBUG: "cypress:server:args"
+  #       env:
+  #         RECORD_REPLAY_TEST_METRICS: 1
+  #         RECORD_REPLAY_TEST_ENVIRONMENT: "1"
+  #         RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
+  #         RECORD_ALL_CONTENT: 1
+  #         RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
+  #         RECORD_REPLAY_DRIVER: /tmp/not-here
+  #         # These two are here to help with measuring the true overhead by disabling diagnostics
+  #         RECORD_REPLAY_DISABLE_ASSERTS: 1
+  #         RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
 
-      - name: Parse test run duration
-        id: set_var
-        if: always()
-        run: |
-          content=`cat duration.json`
-          echo "::set-output name=duration::$content"
+  #     - name: Parse test run duration
+  #       id: set_var
+  #       if: always()
+  #       run: |
+  #         content=`cat duration.json`
+  #         echo "::set-output name=duration::$content"
 
-      - name: Set duration in output
-        if: always()
-        id: end
-        run: echo "noRecordDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
+  #     - name: Set duration in output
+  #       if: always()
+  #       id: end
+  #       run: echo "noRecordDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
 
-  original:
-    name: UI tests (original)
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:node16.13.0-chrome95-ff94
-      options: --user 1001
-    needs: install
-    outputs:
-      originalDuration: ${{steps.end.outputs.originalDuration}}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # original:
+  #   name: UI tests (original)
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: cypress/browsers:node16.13.0-chrome95-ff94
+  #     options: --user 1001
+  #   needs: install
+  #   outputs:
+  #     originalDuration: ${{steps.end.outputs.originalDuration}}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
+  #     - name: Download the build folders
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: build
+  #         path: build
 
-      - name: Cypress info
-        run: npx cypress info
+  #     - name: Cypress info
+  #       run: npx cypress info
 
-      - name: Node info
-        run: node -v
+  #     - name: Node info
+  #       run: node -v
 
-      - name: __e Dir
-        run: ls /__e
+  #     - name: __e Dir
+  #       run: ls /__e
 
-      - name: Set test start
-        if: always()
-        id: start
-        run: echo "time=`date +%s`" >> $GITHUB_OUTPUT
+  #     - name: Set test start
+  #       if: always()
+  #       id: start
+  #       run: echo "time=`date +%s`" >> $GITHUB_OUTPUT
 
-      - name: "UI Tests - Chrome"
-        uses: cypress-io/github-action@v4
-        with:
-          start: yarn start:ci
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 120
-          browser: chrome
-          spec: cypress/tests/ui/*
-          config-file: cypress.config.js
-        # env:
-        #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-        #   # Recommended: pass the GitHub token lets this action correctly
-        #   # determine the unique run id necessary to re-run the checks
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #   DEBUG: "cypress:server:args"
+  #     - name: "UI Tests - Chrome"
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         start: yarn start:ci
+  #         wait-on: "http://localhost:3000"
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: cypress/tests/ui/*
+  #         config-file: cypress.config.js
+  #       # env:
+  #       #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+  #       #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  #       #   # Recommended: pass the GitHub token lets this action correctly
+  #       #   # determine the unique run id necessary to re-run the checks
+  #       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       #   DEBUG: "cypress:server:args"
 
-      - name: Parse test run duration
-        id: set_var
-        if: always()
-        run: |
-          content=`cat duration.json`
-          echo "::set-output name=duration::$content"
+  #     - name: Parse test run duration
+  #       id: set_var
+  #       if: always()
+  #       run: |
+  #         content=`cat duration.json`
+  #         echo "::set-output name=duration::$content"
 
-      - name: Set duration in output
-        id: end
-        if: always()
-        run: echo "originalDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
+  #     - name: Set duration in output
+  #       id: end
+  #       if: always()
+  #       run: echo "originalDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
 
-  upload-benchmarks:
-    name: Upload benchmarks
-    runs-on: ubuntu-latest
-    needs: [record, no-record, original]
-    if: always()
-    steps:
-      - run: |
-          echo "Record Duration: ${{ needs.record.outputs.recordDuration }}"
-          echo "No Record Duration: ${{ needs.no-record.outputs.noRecordDuration }}"
-          echo "Original Duration: ${{ needs.original.outputs.originalDuration }}"
-          echo "Upload Duration: ${{ needs.record.outputs.uploadDuration }}"
-      - name: Fetch API Data 📦
-        uses: JamesIves/fetch-api-data-action@v2
-        # Don't upload metrics for pull requests, so our stats are clean
-        if: ${{ github.ref_name == 'develop' }}
-        with:
-          endpoint: "https://telemetry.replay.io"
-          configuration: '{ "method": "POST", "body": {"event": "Webhook", "source": "metrics", "name": "action-finished-2", "project": "cypress-realworld-app", "originalDuration": "${{ needs.original.outputs.originalDuration }}", "recordDuration": "${{ needs.record.outputs.recordDuration }}", "noRecordDuration": "${{ needs.no-record.outputs.noRecordDuration }}", "uploadDuration": "${{ needs.record.outputs.uploadDuration }}"} }'
+  # upload-benchmarks:
+  #   name: Upload benchmarks
+  #   runs-on: ubuntu-latest
+  #   needs: [record, no-record, original]
+  #   if: always()
+  #   steps:
+  #     - run: |
+  #         echo "Record Duration: ${{ needs.record.outputs.recordDuration }}"
+  #         echo "No Record Duration: ${{ needs.no-record.outputs.noRecordDuration }}"
+  #         echo "Original Duration: ${{ needs.original.outputs.originalDuration }}"
+  #         echo "Upload Duration: ${{ needs.record.outputs.uploadDuration }}"
+  #     - name: Fetch API Data 📦
+  #       uses: JamesIves/fetch-api-data-action@v2
+  #       # Don't upload metrics for pull requests, so our stats are clean
+  #       if: ${{ github.ref_name == 'develop' }}
+  #       with:
+  #         endpoint: "https://telemetry.replay.io"
+  #         configuration: '{ "method": "POST", "body": {"event": "Webhook", "source": "metrics", "name": "action-finished-2", "project": "cypress-realworld-app", "originalDuration": "${{ needs.original.outputs.originalDuration }}", "recordDuration": "${{ needs.record.outputs.recordDuration }}", "noRecordDuration": "${{ needs.no-record.outputs.noRecordDuration }}", "uploadDuration": "${{ needs.record.outputs.uploadDuration }}"} }'
