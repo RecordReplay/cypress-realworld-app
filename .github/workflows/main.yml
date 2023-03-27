@@ -77,6 +77,8 @@ jobs:
       - name: __e Dir
         run: ls /__e
 
+      - run: npx @replayio/replay update-browsers
+
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v4
         with:
@@ -84,7 +86,7 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: replay-firefox
-          spec: cypress/tests/ui/auth.spec.ts
+          spec: cypress/tests/ui/*
           config-file: cypress.config.js
         # env:
         #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
