@@ -85,7 +85,7 @@ jobs:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: replay-firefox
+          browser: "Replay Firefox"
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         # env:
