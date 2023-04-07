@@ -2,6 +2,7 @@ name: E2E Test
 
 env:
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230407-c269f4945746-18c75873cbbb.tar.xz
+  RECORD_REPLAY_DISABLE_FEATURES: register-scripts
 
 on:
   schedule:
