@@ -2,7 +2,6 @@ name: E2E Test
 
 env:
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230407-e9900c692a96-18c75873cbbb.tar.xz
-  RECORD_REPLAY_DISABLE_FEATURES: new-script-handlers
 
 on:
   schedule:
@@ -92,8 +91,8 @@ jobs:
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
           # # These two are here to help with measuring the true overhead by disabling diagnostics
-          # RECORD_REPLAY_DISABLE_ASSERTS: 1
-          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+          RECORD_REPLAY_DISABLE_ASSERTS: 1
+          RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
 
       - name: Parse test run duration
         id: set_var
@@ -173,8 +172,8 @@ jobs:
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
           # # These two are here to help with measuring the true overhead by disabling diagnostics
-          # RECORD_REPLAY_DISABLE_ASSERTS: 1
-          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+          RECORD_REPLAY_DISABLE_ASSERTS: 1
+          RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
 
       - name: Parse test run duration
         id: set_var
@@ -254,8 +253,8 @@ jobs:
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
           # # These two are here to help with measuring the true overhead by disabling diagnostics
-          # RECORD_REPLAY_DISABLE_ASSERTS: 1
-          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+          RECORD_REPLAY_DISABLE_ASSERTS: 1
+          RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
 
       - name: Parse test run duration
         id: set_var
@@ -335,8 +334,8 @@ jobs:
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
           # # These two are here to help with measuring the true overhead by disabling diagnostics
-          # RECORD_REPLAY_DISABLE_ASSERTS: 1
-          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+          RECORD_REPLAY_DISABLE_ASSERTS: 1
+          RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
 
       - name: Parse test run duration
         id: set_var
@@ -416,8 +415,8 @@ jobs:
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
           # # These two are here to help with measuring the true overhead by disabling diagnostics
-          # RECORD_REPLAY_DISABLE_ASSERTS: 1
-          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+          RECORD_REPLAY_DISABLE_ASSERTS: 1
+          RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
 
       - name: Parse test run duration
         id: set_var
