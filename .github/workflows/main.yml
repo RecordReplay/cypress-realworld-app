@@ -15,7 +15,8 @@ on:
 
 env:
   RECORD_REPLAY_FIREFOX_DOWNLOAD_FILE: ${{ github.event.inputs.firefox-runtime }}
-  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: ${{ github.event.inputs.chromium-runtime }}
+  #RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: ${{ github.event.inputs.chromium-runtime }}
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230412-f7ac8e276559-4857f15a9288.tar.xz
   RECORD_REPLAY_TEST_ENVIRONMENT: 1
 
 jobs:
