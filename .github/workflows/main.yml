@@ -123,6 +123,8 @@ jobs:
         with:
           public: true
           api-key: rwk_wayprCcrJi5pM4VNN0kWHkc1AUWfqFyS1musJwdqtC4
+        env:
+          DEBUG: replay:cli*
 
       - name: Set duration in output
         if: always()
