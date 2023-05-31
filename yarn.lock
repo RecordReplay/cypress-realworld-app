@@ -4022,22 +4022,23 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-0.5.4.tgz#e01fd9e98da69dc1400300bdb3770372836a1020"
-  integrity sha512-sAOUXBrtf9zqYmJOBDgfy+UHIodle5X8FyT/FctsUl7OJN5Rs88awlcqkMiQLgZaAaLsZ3KlrCFkmomcymyOaA==
+"@replayio/cypress@^0.5.15":
+  version "0.5.15"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-0.5.15.tgz#cba2af6b2417533026ec4a895a2b44dabc043320"
+  integrity sha512-9/v9efJxT35FEqGzoca3DjX2a9QUHfEW4fhyHGTvrVSiBq0jQAvP/uvlcojFh2e4IxrrZiRwxVCp+kga1fEtxA==
   dependencies:
-    "@replayio/replay" "^0.12.3"
-    "@replayio/test-utils" "^0.5.2"
+    "@replayio/replay" "^0.12.10"
+    "@replayio/test-utils" "^0.5.9"
+    debug "^4.3.4"
     semver "^7.3.8"
     uuid "^8.3.2"
 
-"@replayio/replay@^0.12.3":
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.12.3.tgz#08bc939809aa45380057a49c63fc21c62f5f1175"
-  integrity sha512-BNFyorEpZR1leuteI4rSlFXZFcWFAHTtEI6y4TJfQw4+EEbgjZu9dIZ/k26DiXWy5WHXHBloDS0uSU2NbAW+vQ==
+"@replayio/replay@^0.12.10":
+  version "0.12.10"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.12.10.tgz#21c4bf8da8966866d25d9a6450019eb3f75f0b1e"
+  integrity sha512-FKfxX3KpwR/H6PNzNqv40OjXUOO40ucQxnv9wFntFXAZdpspwlbpN3M0Gc45f3sOGzCrnP3ReseB0TPU3bWkrQ==
   dependencies:
-    "@replayio/sourcemap-upload" "^1.0.6"
+    "@replayio/sourcemap-upload" "^1.0.7"
     commander "^7.2.0"
     debug "^4.3.4"
     is-uuid "^1.0.2"
@@ -4048,10 +4049,10 @@
     text-table "^0.2.0"
     ws "^7.5.0"
 
-"@replayio/sourcemap-upload@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@replayio/sourcemap-upload/-/sourcemap-upload-1.0.6.tgz#2a4580e905448242a011c93887132e635f9993ee"
-  integrity sha512-cv+hgPqJku8xpfQoYDLCELZWikay7kZ8+uxIjVCpMYj4FJOmW8Qei3Z/vuGNaxEE21DDB6I2T/GLfyBMqSvsOw==
+"@replayio/sourcemap-upload@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@replayio/sourcemap-upload/-/sourcemap-upload-1.0.7.tgz#e1aa0e910d7b8bfe8828ea4f27495e3ed9ab2476"
+  integrity sha512-osmLqhOnaqAihY+xD56zu9LECXK1iw3d4oViIGJuZbtVkB8X5EoDTJEBPmj4xL6SG6XxeuKpaqmK2OKFi9YiuQ==
   dependencies:
     commander "^7.2.0"
     debug "^4.3.1"
@@ -4059,12 +4060,12 @@
     node-fetch "^2.6.1"
     string.prototype.matchall "^4.0.5"
 
-"@replayio/test-utils@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-0.5.2.tgz#9224057b0fb5546d757f86641a7d273c221d7def"
-  integrity sha512-GGBUASOlGHh3ya8gO2FO/C8Prv+7+4Jw5pLTJZSOn0Y+EPFucp9EollsKfZg9KMiEurU+1x5RBDxGItfn/8h8A==
+"@replayio/test-utils@^0.5.9":
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-0.5.9.tgz#3f7f9088641b56cccc9156781aa023f999095d1e"
+  integrity sha512-wGtLXLkAdH9tQ1oHQ4E/e3LCi1tKzYBPBkpi3Ef9qhY/EvsjEU5jFMyqLnd5YQXNo1k3rpOLyL+T+u7GVJea5g==
   dependencies:
-    "@replayio/replay" "^0.12.3"
+    "@replayio/replay" "^0.12.10"
     "@types/node-fetch" "^2.6.2"
     debug "^4.3.4"
     node-fetch "^2.6.7"
