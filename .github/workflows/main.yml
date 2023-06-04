@@ -2,7 +2,7 @@ name: E2E Test
 
 env:
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230604-4b7e9440613d-9a1d46c3efe0.tar.xz
-  RECORD_REPLAY_DRIVER: /tmp/not-here
+  RECORD_REPLAY_DISABLE_FEATURES: ["record-replay"]
 
 on:
   schedule:
