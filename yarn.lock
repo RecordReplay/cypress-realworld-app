@@ -4022,21 +4022,21 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.0.0-alpha.0.tgz#6c43642a2b7bd5037b9daecd34e5138a719a8651"
-  integrity sha512-AnyfcOFS0ko7ncwGiES+40e8osaBFba5q2oy7xYfzzOIOQqiC9Q30km/MAae871F7oZqDKkEuVirvahdIT12+Q==
+"@replayio/cypress@1.0.0-alpha.2":
+  version "1.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.0.0-alpha.2.tgz#127825599c9ab0f619aa3bc342fb5d5fa0e086e3"
+  integrity sha512-OXNfL7cnSkfYifzae/I4Z6TOek5jeZQ9B0FeFyiMcYgWg8yEX3vLI8W+RCNc6Fp4C8vMtpKHICduw0csLAUwTg==
   dependencies:
-    "@replayio/replay" "^0.13.0-alpha.0"
-    "@replayio/test-utils" "^0.6.0-alpha.0"
+    "@replayio/replay" "^0.12.12-alpha.0"
+    "@replayio/test-utils" "^1.0.0-alpha.2"
     debug "^4.3.4"
     semver "^7.3.8"
     uuid "^8.3.2"
 
-"@replayio/replay@^0.13.0-alpha.0":
-  version "0.13.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.13.0-alpha.0.tgz#cd696dc3cd4903adf4fec9400698c79ba4cb0855"
-  integrity sha512-n6IfEmzk1CWLe0HGmKAdyf68JF/C7Hs14Knnd4yKgLTXVWpbwJ2y+7IPAhJjPMuKGXkupzVN2sJkwHlNNzvijA==
+"@replayio/replay@^0.12.12-alpha.0":
+  version "0.12.12-alpha.0"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.12.12-alpha.0.tgz#c79f9805c222e6781b84a99aedf5f24a5126dd54"
+  integrity sha512-wA4Z5d1JS1mEhZQ4ymfWXeivy0qe71shG8AUf++XZFBqtF0t2ii4bTOQbLY2oLPduFRur8sYEQijVpltPCSroA==
   dependencies:
     "@replayio/sourcemap-upload" "^1.0.7"
     commander "^7.2.0"
@@ -4060,12 +4060,12 @@
     node-fetch "^2.6.1"
     string.prototype.matchall "^4.0.5"
 
-"@replayio/test-utils@^0.6.0-alpha.0":
-  version "0.6.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-0.6.0-alpha.0.tgz#b72572d6f507fa0f1fa98d259047445123ef274c"
-  integrity sha512-iW55/g0WBhMKiVhcY4TLlRNcr5djIVnwHVkAP4zqoPuQ9es1vrGZRhm32VIvHmhLKDG4nia5UfpaNaScthOToA==
+"@replayio/test-utils@^1.0.0-alpha.2":
+  version "1.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.0.0-alpha.2.tgz#f4c2ecf24d7daa775184d6e9e45fd4d1b03d9b97"
+  integrity sha512-S85YtMg1TPqEKyTMbrEai+6XZud2PN44wphgV3O6cgcQqAEKD8WCG2Q3bEowu6BYYNV/qgF+cC7SItwujITRSg==
   dependencies:
-    "@replayio/replay" "^0.13.0-alpha.0"
+    "@replayio/replay" "^0.12.12-alpha.0"
     "@types/node-fetch" "^2.6.2"
     debug "^4.3.4"
     node-fetch "^2.6.7"
