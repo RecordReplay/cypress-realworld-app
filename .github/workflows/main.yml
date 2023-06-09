@@ -1,7 +1,7 @@
 name: E2E Test
 
 env:
-  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230607-01019aac2f5c-478dc157a31c.tar.xz
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230609-c5c9d053411d-1131df29b651.tar.xz
   RECORD_REPLAY_DISABLE_FEATURES: "[\"record-replay\",\"recording-data\",\"intercept-calls\"]"
 
 on:
