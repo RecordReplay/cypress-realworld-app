@@ -1,7 +1,7 @@
 name: E2E Test
 
 env:
-  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230609-c5c9d053411d-1131df29b651.tar.xz
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230609-9c2314454512-1131df29b651.tar.xz
   RECORD_REPLAY_DISABLE_FEATURES: "[\"record-replay\",\"recording-data\",\"intercept-calls\"]"
 
 on:
@@ -102,6 +102,12 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
+
       - name: Set upload start
         if: always()
         id: uploadStart
@@ -182,6 +188,12 @@ jobs:
         run: |
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
+
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -264,6 +276,12 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
+
       - name: Set upload start
         if: always()
         id: uploadStart
@@ -344,6 +362,12 @@ jobs:
         run: |
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
+
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -426,6 +450,12 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
+
       - name: Set upload start
         if: always()
         id: uploadStart
@@ -506,6 +536,12 @@ jobs:
         run: |
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
+
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -588,6 +624,12 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
+
       - name: Set upload start
         if: always()
         id: uploadStart
@@ -668,6 +710,12 @@ jobs:
         run: |
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
+
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -750,6 +798,12 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
+
       - name: Set upload start
         if: always()
         id: uploadStart
@@ -830,6 +884,12 @@ jobs:
         run: |
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
+
+      - name: Dump file
+        if: always()
+        run: |
+          content=`cat record_replay_initialization.txt`
+          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
