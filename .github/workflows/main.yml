@@ -2,7 +2,7 @@ name: E2E Test
 
 env:
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230609-0af1c52fa48e-1131df29b651.tar.xz
-  RECORD_REPLAY_DISABLE_FEATURES: "[\"record-replay\",\"recording-data\",\"intercept-calls\",\"v8-gc-flags\",\"disable-incremental-marking\"]"
+  RECORD_REPLAY_DISABLE_FEATURES: "[\"record-replay\",\"recording-data\",\"intercept-calls\",\"v8-gc-flags\",\"disable-incremental-marking\",\"disable-compilation-cache\"]"
 
 on:
   schedule:
