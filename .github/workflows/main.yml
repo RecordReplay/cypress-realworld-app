@@ -1,8 +1,7 @@
 name: E2E Test
 
 env:
-  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230609-0af1c52fa48e-1131df29b651.tar.xz
-  RECORD_REPLAY_DISABLE_FEATURES: "[\"v8-gc-flags\",\"disable-incremental-marking\",\"disable-compilation-cache\"]"
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230613-937b85bc1d2c-864c1a4bfd13.tar.xz
 
 on:
   schedule:
