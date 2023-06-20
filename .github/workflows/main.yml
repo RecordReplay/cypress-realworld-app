@@ -2,9 +2,10 @@ name: E2E Test
 
 env:
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230619-5c885a9fbef7-c3586eaaeb1d.tar.xz
+  RECORD_REPLAY_DISABLE_FEATURES: "[\"record-replay\"]"
   # RECORD_REPLAY_DISABLE_FEATURES: "[{\"feature\":\"no-compile-cache\",\"subfeatures\":[\"V8CodeCache::GetCompileOptions\",\"ShouldGenerateV8CodeCache\"]}]"
   # RECORD_REPLAY_DISABLE_FEATURES: "[\"no-compile-cache\"]"
-  RECORD_REPLAY_DRIVER: /tmp/not-here
+  # RECORD_REPLAY_DRIVER: /tmp/not-here
 
 on:
   schedule:
