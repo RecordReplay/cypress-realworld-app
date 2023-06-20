@@ -104,11 +104,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -191,11 +191,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -278,11 +278,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -365,11 +365,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -452,11 +452,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -539,11 +539,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -626,11 +626,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -713,11 +713,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -800,11 +800,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
@@ -887,11 +887,11 @@ jobs:
           content=`cat duration.json`
           echo "::set-output name=duration::$content"
 
-      - name: Dump file
-        if: always()
-        run: |
-          content=`cat /github/home/record_replay_initialization`
-          echo "INITIALIZATION $content"
+#      - name: Dump file
+#        if: always()
+#        run: |
+#          content=`cat /github/home/record_replay_initialization`
+#          echo "INITIALIZATION $content"
 
       - name: Set upload start
         if: always()
