@@ -68,7 +68,7 @@
     "@types/express-session": "1.17.4",
     "@types/faker": "5.5.9",
     "@types/http-proxy-middleware": "0.19.3",
-    "@types/jest": "27.4.1",
+    "@types/jest": "29.5.3",
     "@types/json-server": "0.14.4",
     "@types/jsonwebtoken": "8.5.8",
     "@types/jwt-decode": "2.2.1",
