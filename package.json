@@ -90,7 +90,7 @@
     "@types/yup": "0.29.13",
     "aws-sdk": "2.1116.0",
     "bcryptjs": "2.4.3",
-    "concurrently": "7.1.0",
+    "concurrently": "8.2.0",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "cypress": "^10.7.0",
