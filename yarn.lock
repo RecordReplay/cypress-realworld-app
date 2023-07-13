@@ -4059,21 +4059,23 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@^0.5.15":
-  version "0.5.15"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-0.5.15.tgz#cba2af6b2417533026ec4a895a2b44dabc043320"
-  integrity sha512-9/v9efJxT35FEqGzoca3DjX2a9QUHfEW4fhyHGTvrVSiBq0jQAvP/uvlcojFh2e4IxrrZiRwxVCp+kga1fEtxA==
+"@replayio/cypress@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.0.6.tgz#058f20646049b892c5ac6d93eacb2e0c9e6d03d9"
+  integrity sha512-2Uolzz/sbmCCtKFhUqzJRi+r9vWHbHjlUs62O3nCqpYKoMBSHGK6GtUBYz9wa4nWwrGhF+UVO/JB9yS6uWiu+A==
   dependencies:
-    "@replayio/replay" "^0.12.10"
-    "@replayio/test-utils" "^0.5.9"
+    "@replayio/replay" "^0.13.0"
+    "@replayio/test-utils" "^1.0.4"
+    chalk "^4.1.2"
     debug "^4.3.4"
-    semver "^7.3.8"
+    semver "^7.5.2"
+    terminate "^2.6.1"
     uuid "^8.3.2"
 
-"@replayio/replay@^0.12.10":
-  version "0.12.10"
-  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.12.10.tgz#21c4bf8da8966866d25d9a6450019eb3f75f0b1e"
-  integrity sha512-FKfxX3KpwR/H6PNzNqv40OjXUOO40ucQxnv9wFntFXAZdpspwlbpN3M0Gc45f3sOGzCrnP3ReseB0TPU3bWkrQ==
+"@replayio/replay@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.13.0.tgz#9c3ae6b81a618408bd98bb99241c1a996a40f467"
+  integrity sha512-5uaXZg67raXhfLILVpqTZGY+I0TAIU1fQrm6ozjASTWowEdwdj963btUOVTFWiA/4fH1l1g58LoeKx3Yfpoo6w==
   dependencies:
     "@replayio/sourcemap-upload" "^1.0.7"
     commander "^7.2.0"
@@ -4097,12 +4099,12 @@
     node-fetch "^2.6.1"
     string.prototype.matchall "^4.0.5"
 
-"@replayio/test-utils@^0.5.9":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-0.5.9.tgz#3f7f9088641b56cccc9156781aa023f999095d1e"
-  integrity sha512-wGtLXLkAdH9tQ1oHQ4E/e3LCi1tKzYBPBkpi3Ef9qhY/EvsjEU5jFMyqLnd5YQXNo1k3rpOLyL+T+u7GVJea5g==
+"@replayio/test-utils@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.0.4.tgz#dc0c2aff5085a827817e46bc9e0ed9787d1ebe50"
+  integrity sha512-Zyn4H0qD94V7PQq0KVf8WxBYH2cVQwm1Zc3spMYprjKee5kjbz6vTcd58/MwgMX4vJKl9Mjn8NFanMA+6x95WA==
   dependencies:
-    "@replayio/replay" "^0.12.10"
+    "@replayio/replay" "^0.13.0"
     "@types/node-fetch" "^2.6.2"
     debug "^4.3.4"
     node-fetch "^2.6.7"
@@ -14454,7 +14456,7 @@ prr@~1.0.1:
   resolved "https://registry.yarnpkg.com/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
   integrity sha1-0/wRS6BplaRexok/SEzrHXj19HY=
 
-ps-tree@1.2.0:
+ps-tree@1.2.0, ps-tree@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ps-tree/-/ps-tree-1.2.0.tgz#5e7425b89508736cdd4f2224d028f7bb3f722ebd"
   integrity sha512-0VnamPPYHl4uaU/nSFeZZpR21QAWRz+sRv4iW9+v/GS/J5U5iZB5BNN6J0RMoOvdx2gWM2+ZFMIm58q24e4UYA==
@@ -15669,10 +15671,10 @@ semver@^7.2.1, semver@^7.3.2, semver@^7.3.4, semver@^7.3.5:
   dependencies:
     lru-cache "^6.0.0"
 
-semver@^7.3.8:
-  version "7.3.8"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.8.tgz#07a78feafb3f7b32347d725e33de7e2a2df67798"
-  integrity sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==
+semver@^7.5.2:
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
+  integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
   dependencies:
     lru-cache "^6.0.0"
 
@@ -16610,6 +16612,13 @@ terminal-link@^2.0.0:
   dependencies:
     ansi-escapes "^4.2.1"
     supports-hyperlinks "^2.0.0"
+
+terminate@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/terminate/-/terminate-2.6.1.tgz#99a4eb1647011b95f47401f6beb9f23e0362fbc0"
+  integrity sha512-0kdr49oam98yvjkVY+gfUaT3SMaJI6Sc+yijJjU+qhat+0NQKQn60OsIZZeKyVgTO0/33nRa3HowRbpw3A7u9A==
+  dependencies:
+    ps-tree "^1.2.0"
 
 terser-webpack-plugin@4.2.3:
   version "4.2.3"
