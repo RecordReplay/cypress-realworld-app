@@ -61,7 +61,7 @@ jobs:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          command: npx @replayio/cypress run --mode diagnostics --level full --browser replay-chromium  --spec cypress/tests/ui/bankaccounts.spec.ts
+          command: npx @replayio/cypress run --browser replay-chromium  --spec cypress/tests/ui/bankaccounts.spec.ts
           config-file: cypress.config.js
         # env:
         #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
@@ -71,6 +71,7 @@ jobs:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         #   DEBUG: "cypress:server:args"
         env:
+          RECORD_REPLAY_NO_RECORD: 1
           # RECORD_REPLAY_JS_ASSERTS: 1
           RECORD_REPLAY_TEST_METRICS: 1
           RECORD_REPLAY_TEST_ENVIRONMENT: "1"
