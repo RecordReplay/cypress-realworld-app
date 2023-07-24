@@ -1,0 +1,92 @@
+name: E2E Test
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  push:
+  workflow_dispatch:
+    inputs:
+      chromium-runtime:
+        type: string
+        description: Custom Chromium Runtime
+      firefox-runtime:
+        type: string
+        description: Custom Firefox Runtime
+
+env:
+  RECORD_REPLAY_FIREFOX_DOWNLOAD_FILE: ${{ github.event.inputs.firefox-runtime }}
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: ${{ github.event.inputs.chromium-runtime }}
+  RECORD_REPLAY_TEST_ENVIRONMENT: 1
+  DEBUG: cypress:launcher:browsers
+  RECORD_REPLAY_VERBOSE: 1
+
+jobs:
+  install:
+    timeout-minutes: 90
+    strategy:
+      matrix:
+        platform: [windows-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v4
+        with:
+          runTests: false
+      # report machine parameters
+      - run: yarn cypress info
+      - run: node --version
+      - run: node -p 'os.cpus()'
+      - run: yarn types
+      - run: yarn lint
+      - run: yarn test:unit:ci
+      - run: yarn build:ci
+
+      - name: Cypress info
+        run: npx cypress info
+
+      - name: Node info
+        run: node -v
+
+      - name: "UI Tests - Chrome"
+        uses: cypress-io/github-action@v4
+        with:
+          start: yarn start:ci
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+          command: npx @replayio/cypress run --mode diagnostics --level full --browser replay-chromium  --spec cypress/tests/ui/bankaccounts.spec.ts
+          config-file: cypress.config.js
+        # env:
+        #   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        #   # Recommended: pass the GitHub token lets this action correctly
+        #   # determine the unique run id necessary to re-run the checks
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   DEBUG: "cypress:server:args"
+        env:
+          # RECORD_REPLAY_JS_ASSERTS: 1
+          RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_TEST_ENVIRONMENT: "1"
+          RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
+          RECORD_ALL_CONTENT: 1
+          RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
+          REPLAY_METADATA_TEST_RUN_TITLE: ${{ matrix.platform }}
+          # # These two are here to help with measuring the true overhead by disabling diagnostics
+          # RECORD_REPLAY_DISABLE_ASSERTS: 1
+          # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+
+      - name: Upload replays
+        if: ${{ always() }}
+        uses: replayio/action-upload@v0.5.0
+        with:
+          public: true
+          api-key: rwk_wayprCcrJi5pM4VNN0kWHkc1AUWfqFyS1musJwdqtC4
+        env:
+          DEBUG: replay:cli*
