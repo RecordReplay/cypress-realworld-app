@@ -4089,9 +4089,9 @@
     ws "^7.5.0"
 
 "@replayio/sourcemap-upload@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@replayio/sourcemap-upload/-/sourcemap-upload-1.1.0.tgz#98c395552a066ed5b274f3253144dd395ee8152c"
-  integrity sha512-u/bjGHQurk8+tXIHNQBLoS+f3mER7dqz0SW5OAKnsPWfZ0kFPUvrGRbob0UkU/Thl1C4U/8FnIWIawzwd3WQ1g==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@replayio/sourcemap-upload/-/sourcemap-upload-1.1.1.tgz#2e6e5c9a5b5037bb2e2d21b2751411e5188eb486"
+  integrity sha512-XcJmyi2lxVUv/OuCC4GS7SFDrwViObw5czLy2pz7i2AAHFdFQJxTSqnNnw00m7ocUBdgcn/P0DzKHeRvTgPx4w==
   dependencies:
     commander "^7.2.0"
     debug "^4.3.1"
