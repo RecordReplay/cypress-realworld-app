@@ -72,6 +72,7 @@ jobs:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         #   DEBUG: "cypress:server:args"
         env:
+          REPLAY_API_KEY: rwk_wayprCcrJi5pM4VNN0kWHkc1AUWfqFyS1musJwdqtC4
           # RECORD_REPLAY_JS_ASSERTS: 1
           RECORD_REPLAY_TEST_METRICS: 1
           RECORD_REPLAY_TEST_ENVIRONMENT: "1"
