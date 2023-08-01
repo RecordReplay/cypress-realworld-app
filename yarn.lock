@@ -4059,10 +4059,10 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.1.1.tgz#095e3fb417770533c1d6b97833f2e3aecd904c89"
-  integrity sha512-fFTL3OjqnZT0QzLEQsUzcXMJRyE5VTfhCWMJinm/v2sh9nt19yo28c7rG6VDU1i1g44zVnquj4Q54rCQ6k64fg==
+"@replayio/cypress@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.1.2.tgz#3ba77d5f371d96887f257b7506b3787656053a15"
+  integrity sha512-WSeZAp5HzYqjo2Qj51CrfnGrDPoGlZDkG8TVF5Lh3mjW4hMPDS1HmU4gnIoHsd9YTZaBoRMBZqSgCJ3TQ+REFA==
   dependencies:
     "@replayio/replay" "^0.14.2"
     "@replayio/test-utils" "^1.1.1"
