@@ -1,9 +1,6 @@
-name: E2E Test
+name: Windows Diagnostic Run
 
 on:
-  schedule:
-    - cron: "0 1 * * *"
-  push:
   workflow_dispatch:
     inputs:
       chromium-runtime:
