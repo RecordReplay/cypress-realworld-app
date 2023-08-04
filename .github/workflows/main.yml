@@ -31,6 +31,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Cypress install
         uses: cypress-io/github-action@v4
         with:
