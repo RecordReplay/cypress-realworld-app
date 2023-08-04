@@ -24,9 +24,9 @@ jobs:
   install:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    container:
-      image: cypress/browsers:node16.13.0-chrome95-ff94
-      options: --user 1001
+    # container:
+    #   image: cypress/browsers:node16.13.0-chrome95-ff94
+    #   options: --user 1001
     steps:
       - name: Checkout
         uses: actions/checkout@v3
