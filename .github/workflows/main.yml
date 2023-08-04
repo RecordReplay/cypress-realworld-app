@@ -1,8 +1,6 @@
 name: E2E Test
 
 on:
-  schedule:
-    - cron: "0 1 * * *"
   push:
   workflow_dispatch:
     inputs:
@@ -17,17 +15,16 @@ env:
   RECORD_REPLAY_FIREFOX_DOWNLOAD_FILE: ${{ github.event.inputs.firefox-runtime }}
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: ${{ github.event.inputs.chromium-runtime }}
   RECORD_REPLAY_TEST_ENVIRONMENT: 1
-  DEBUG: cypress:launcher:browsers
+  DEBUG: cypress:launcher:browsers*
   RECORD_REPLAY_VERBOSE: 1
 
 jobs:
   install:
+    runs-on: ubuntu-latest
     timeout-minutes: 90
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
-      fail-fast: false
-    runs-on: ${{ matrix.platform }}
+    # container:
+    #   image: cypress/browsers:node16.13.0-chrome95-ff94
+    #   options: --user 1001
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -49,11 +46,41 @@ jobs:
       - run: yarn test:unit:ci
       - run: yarn build:ci
 
+      - name: Save build folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
+  record:
+    name: UI tests (record)
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node16.13.0-chrome95-ff94
+      options: --user 1001
+    needs: install
+    outputs:
+      recordDuration: ${{steps.end.outputs.recordDuration}}
+      uploadDuration: ${{steps.end.outputs.uploadDuration}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download the build folders
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+
       - name: Cypress info
         run: npx cypress info
 
       - name: Node info
         run: node -v
+
+      - name: __e Dir
+        run: ls /__e
 
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v4
@@ -72,17 +99,27 @@ jobs:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         #   DEBUG: "cypress:server:args"
         env:
-          REPLAY_API_KEY: rwk_wayprCcrJi5pM4VNN0kWHkc1AUWfqFyS1musJwdqtC4
           # RECORD_REPLAY_JS_ASSERTS: 1
           RECORD_REPLAY_TEST_METRICS: 1
           RECORD_REPLAY_TEST_ENVIRONMENT: "1"
           RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
-          REPLAY_METADATA_TEST_RUN_TITLE: ${{ matrix.platform }}
           # # These two are here to help with measuring the true overhead by disabling diagnostics
           # RECORD_REPLAY_DISABLE_ASSERTS: 1
           # RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
+
+      - name: Parse test run duration
+        id: set_var
+        if: always()
+        run: |
+          content=`cat duration.json`
+          echo "::set-output name=duration::$content"
+
+      - name: Set upload start
+        if: always()
+        id: uploadStart
+        run: echo "time=`date +%s`" >> $GITHUB_OUTPUT
 
       - name: Upload replays
         if: ${{ always() }}
@@ -92,3 +129,10 @@ jobs:
           api-key: rwk_wayprCcrJi5pM4VNN0kWHkc1AUWfqFyS1musJwdqtC4
         env:
           DEBUG: replay:cli*
+
+      - name: Set duration in output
+        if: always()
+        id: end
+        run: |
+          echo "recordDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
+          echo "uploadDuration=$(((`date +%s` - ${{ steps.uploadStart.outputs.time }}) * 1000))" >> $GITHUB_OUTPUT
