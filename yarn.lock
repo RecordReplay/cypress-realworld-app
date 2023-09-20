@@ -4059,23 +4059,23 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.1.1.tgz#095e3fb417770533c1d6b97833f2e3aecd904c89"
-  integrity sha512-fFTL3OjqnZT0QzLEQsUzcXMJRyE5VTfhCWMJinm/v2sh9nt19yo28c7rG6VDU1i1g44zVnquj4Q54rCQ6k64fg==
+"@replayio/cypress@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.3.3.tgz#e32e637d52d439a622df49681cfa639a7912a321"
+  integrity sha512-Fepvi3gjiB0ujLBmRgbyqxmMNXchpa8NLPaQepL2js3G6Ph3K3cimuDkriZ4eljZ4WADAYUcHflB72ehOQgLzQ==
   dependencies:
-    "@replayio/replay" "^0.14.2"
-    "@replayio/test-utils" "^1.1.1"
+    "@replayio/replay" "^0.17.0"
+    "@replayio/test-utils" "^1.1.7"
     chalk "^4.1.2"
     debug "^4.3.4"
     semver "^7.5.2"
     terminate "^2.6.1"
     uuid "^8.3.2"
 
-"@replayio/replay@^0.14.2":
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.14.2.tgz#1df6974d9dba3d79641806d0e4372583329e9858"
-  integrity sha512-ZLO8D9S++ryhkjhGywR46NPjBskrNK2OgxjIyAG47NXpk6yJdPYw+pECJ60bhSHv6Y4KCUdVNlOaIbO14IBq3Q==
+"@replayio/replay@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.17.0.tgz#30d7ca46652ad08b9fc56437fa286a5994c5d615"
+  integrity sha512-aEcov1ANoLiNIlmzjA6o2gV3Eheq+ew/8Xhx9QE7vZR5LQG/+5SS5cJaPm+OFHciXLks1IgH3t3CuvJigaY58w==
   dependencies:
     "@replayio/sourcemap-upload" "^1.1.1"
     commander "^7.2.0"
@@ -4099,12 +4099,12 @@
     node-fetch "^2.6.1"
     string.prototype.matchall "^4.0.5"
 
-"@replayio/test-utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.1.1.tgz#52ac290748a19b544792be06b60546ed596a5bcd"
-  integrity sha512-blBt2R0cix+5U35RJD+0ITWXHkj4Fxy77TIaU96TP6lINRsSRcfiGd6Xff63jnWNOCfPk/ac+rm1cih2sadtFQ==
+"@replayio/test-utils@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.1.7.tgz#f5fe25bfb61404b56aa5e31cd039d5481ff19d38"
+  integrity sha512-5iyTKB6ELHQMHNkvgDr+1oXgZSETXqQYEnBu1R2YZ2X3BCXOuPqz/Sy2U3HzMe214i7zH1keZu6WJ3NSY/+pCw==
   dependencies:
-    "@replayio/replay" "^0.14.2"
+    "@replayio/replay" "^0.17.0"
     "@types/node-fetch" "^2.6.2"
     debug "^4.3.4"
     node-fetch "^2.6.7"
