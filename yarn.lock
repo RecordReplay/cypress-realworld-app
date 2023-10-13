@@ -4088,6 +4088,22 @@
     text-table "^0.2.0"
     ws "^7.5.0"
 
+"@replayio/replay@^0.17.4":
+  version "0.17.4"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.17.4.tgz#1d37edec738daf96261cbdee7ecbe6742c418052"
+  integrity sha512-UUUF3xl4DrUe2Iup+ZRuzjM3eOgVEZXZ0qduIx3eMWQXwFcowIasUNcTcva3QwPMhCxjHZr7I4KqULVz8prgFg==
+  dependencies:
+    "@replayio/sourcemap-upload" "^1.1.1"
+    commander "^7.2.0"
+    debug "^4.3.4"
+    is-uuid "^1.0.2"
+    jsonata "^1.8.6"
+    node-fetch "^2.6.8"
+    p-map "^4.0.0"
+    superstruct "^0.15.4"
+    text-table "^0.2.0"
+    ws "^7.5.0"
+
 "@replayio/sourcemap-upload@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@replayio/sourcemap-upload/-/sourcemap-upload-1.1.1.tgz#2e6e5c9a5b5037bb2e2d21b2751411e5188eb486"
@@ -4100,12 +4116,11 @@
     string.prototype.matchall "^4.0.5"
 
 "@replayio/test-utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.1.1.tgz#52ac290748a19b544792be06b60546ed596a5bcd"
-  integrity sha512-blBt2R0cix+5U35RJD+0ITWXHkj4Fxy77TIaU96TP6lINRsSRcfiGd6Xff63jnWNOCfPk/ac+rm1cih2sadtFQ==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.2.0.tgz#7a81eb88e06cd57b8e8a668493105e7478527eda"
+  integrity sha512-l8cZvZ+g0pBjPlME6bqbg6vxCY5XYES1Ne4IGWXeK8mXVdGioxaFmfI0m6IzOdzO17Trupxam6Dp0x44TiSRsA==
   dependencies:
-    "@replayio/replay" "^0.14.2"
-    "@types/node-fetch" "^2.6.2"
+    "@replayio/replay" "^0.17.4"
     debug "^4.3.4"
     node-fetch "^2.6.7"
     uuid "^8.3.2"
@@ -4651,14 +4666,6 @@
   integrity sha512-BiLcfVqGBZCyNCnCH3F4o2GmDLrpy0HeBVnNlyZG4fo88ZiE9SoiBe3C+2ezuwbjlEyT+PDZ17//TAlRxAn75Q==
   dependencies:
     "@types/node" "*"
-
-"@types/node-fetch@^2.6.2":
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.6.4.tgz#1bc3a26de814f6bf466b25aeb1473fa1afe6a660"
-  integrity sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==
-  dependencies:
-    "@types/node" "*"
-    form-data "^3.0.0"
 
 "@types/node@*":
   version "20.4.2"
