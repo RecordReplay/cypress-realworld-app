@@ -4059,23 +4059,24 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.1.1.tgz#095e3fb417770533c1d6b97833f2e3aecd904c89"
-  integrity sha512-fFTL3OjqnZT0QzLEQsUzcXMJRyE5VTfhCWMJinm/v2sh9nt19yo28c7rG6VDU1i1g44zVnquj4Q54rCQ6k64fg==
+"@replayio/cypress@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.5.0.tgz#f501898e8a402f15dd4efa8d971fd370393ba362"
+  integrity sha512-I5es1sbkF/jRYGjNNN07dXgpB9BxJhJLyy8M0SlVrTFIDNt13CiFs9XN1PuogXU+9qyUkO7KddDLmTa4feEJqg==
   dependencies:
-    "@replayio/replay" "^0.14.2"
-    "@replayio/test-utils" "^1.1.1"
+    "@replayio/replay" "^0.17.4"
+    "@replayio/test-utils" "^1.2.0"
     chalk "^4.1.2"
     debug "^4.3.4"
     semver "^7.5.2"
     terminate "^2.6.1"
+    txml "^3.2.5"
     uuid "^8.3.2"
 
-"@replayio/replay@^0.14.2":
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.14.2.tgz#1df6974d9dba3d79641806d0e4372583329e9858"
-  integrity sha512-ZLO8D9S++ryhkjhGywR46NPjBskrNK2OgxjIyAG47NXpk6yJdPYw+pECJ60bhSHv6Y4KCUdVNlOaIbO14IBq3Q==
+"@replayio/replay@^0.17.4":
+  version "0.17.4"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.17.4.tgz#1d37edec738daf96261cbdee7ecbe6742c418052"
+  integrity sha512-UUUF3xl4DrUe2Iup+ZRuzjM3eOgVEZXZ0qduIx3eMWQXwFcowIasUNcTcva3QwPMhCxjHZr7I4KqULVz8prgFg==
   dependencies:
     "@replayio/sourcemap-upload" "^1.1.1"
     commander "^7.2.0"
@@ -4099,13 +4100,12 @@
     node-fetch "^2.6.1"
     string.prototype.matchall "^4.0.5"
 
-"@replayio/test-utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.1.1.tgz#52ac290748a19b544792be06b60546ed596a5bcd"
-  integrity sha512-blBt2R0cix+5U35RJD+0ITWXHkj4Fxy77TIaU96TP6lINRsSRcfiGd6Xff63jnWNOCfPk/ac+rm1cih2sadtFQ==
+"@replayio/test-utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.2.0.tgz#7a81eb88e06cd57b8e8a668493105e7478527eda"
+  integrity sha512-l8cZvZ+g0pBjPlME6bqbg6vxCY5XYES1Ne4IGWXeK8mXVdGioxaFmfI0m6IzOdzO17Trupxam6Dp0x44TiSRsA==
   dependencies:
-    "@replayio/replay" "^0.14.2"
-    "@types/node-fetch" "^2.6.2"
+    "@replayio/replay" "^0.17.4"
     debug "^4.3.4"
     node-fetch "^2.6.7"
     uuid "^8.3.2"
@@ -4651,14 +4651,6 @@
   integrity sha512-BiLcfVqGBZCyNCnCH3F4o2GmDLrpy0HeBVnNlyZG4fo88ZiE9SoiBe3C+2ezuwbjlEyT+PDZ17//TAlRxAn75Q==
   dependencies:
     "@types/node" "*"
-
-"@types/node-fetch@^2.6.2":
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.6.4.tgz#1bc3a26de814f6bf466b25aeb1473fa1afe6a660"
-  integrity sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==
-  dependencies:
-    "@types/node" "*"
-    form-data "^3.0.0"
 
 "@types/node@*":
   version "20.4.2"
@@ -15218,6 +15210,15 @@ read-pkg@^5.2.0:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
+"readable-stream@2 || 3":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.2.tgz#56a9b36ea965c00c5a93ef31eb111a0f11056967"
+  integrity sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==
+  dependencies:
+    inherits "^2.0.3"
+    string_decoder "^1.1.1"
+    util-deprecate "^1.0.1"
+
 readable-stream@^3.0.6, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
@@ -16930,6 +16931,14 @@ through2@^2.0.0:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
+through2@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/through2/-/through2-3.0.2.tgz#99f88931cfc761ec7678b41d5d7336b5b6a07bf4"
+  integrity sha512-enaDQ4MUyP2W6ZyT6EsMzqBPZaM/avg8iuo+l2d3QCs0J+6RaqkHV/2/lOwDTueBHeJ/2LG9lrLW3d5rWPucuQ==
+  dependencies:
+    inherits "^2.0.4"
+    readable-stream "2 || 3"
+
 through@2, through@^2.3.8, through@~2.3, through@~2.3.1:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
@@ -17188,6 +17197,13 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
+
+txml@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/txml/-/txml-3.2.5.tgz#607eeef7e021dba8c6dd173b3971b12443deb9ec"
+  integrity sha512-AtN8AgJLiDanttIXJaQlxH8/R0NOCNwto8kcO7BaxdLgsN9b7itM9lnTD7c2O3TadP+hHB9j7ra5XGFRPNnk/g==
+  dependencies:
+    through2 "^3.0.1"
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
