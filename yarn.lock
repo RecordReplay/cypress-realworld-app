@@ -4059,13 +4059,13 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@replayio/cypress@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.6.0.tgz#418a2c9e89d5cafa8fa1374b5e328eeb47999c00"
-  integrity sha512-HpPk8o4rUCJq4+jdyJezECeRpwuhloeynCokuclcnTI9Y3pUZvOL65b7PmAGEHftwMGW0th3IylVqemxFqnPKQ==
+"@replayio/cypress@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-1.6.1.tgz#b01760a5796d72e5401e4b728469fe911d9c3ca5"
+  integrity sha512-rMfYzEVQGRiMFSCWdoQryzOV6LyMfDKvHgRggQDDdaNn1Dapmy8KeYISHR00h139RYvQT6H4a/0xCHyGvRx+Tg==
   dependencies:
-    "@replayio/replay" "^0.17.4"
-    "@replayio/test-utils" "^1.2.1"
+    "@replayio/replay" "^0.17.5"
+    "@replayio/test-utils" "^1.2.2"
     chalk "^4.1.2"
     debug "^4.3.4"
     semver "^7.5.2"
@@ -4074,10 +4074,10 @@
     uuid "^8.3.2"
     ws "^8.14.2"
 
-"@replayio/replay@^0.17.4":
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.17.4.tgz#1d37edec738daf96261cbdee7ecbe6742c418052"
-  integrity sha512-UUUF3xl4DrUe2Iup+ZRuzjM3eOgVEZXZ0qduIx3eMWQXwFcowIasUNcTcva3QwPMhCxjHZr7I4KqULVz8prgFg==
+"@replayio/replay@^0.17.5":
+  version "0.17.5"
+  resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.17.5.tgz#b451c093de8fec19859b4bc9b6cfdfacd9abc8ed"
+  integrity sha512-FZO9UhvGwvGdtjVtUnhGYWsO9sSHdRrwFTvraMBiR9AKRh8Npp5sF/AsAEFtQi1+T2S4VU2qH6TRXCNy44yMSg==
   dependencies:
     "@replayio/sourcemap-upload" "^1.1.1"
     commander "^7.2.0"
@@ -4101,12 +4101,12 @@
     node-fetch "^2.6.1"
     string.prototype.matchall "^4.0.5"
 
-"@replayio/test-utils@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.2.1.tgz#e7b8eda0777ee3093e90d1725e1ddf55d3698fe6"
-  integrity sha512-/SadK+xd2qeYEXDgCqSsU+aDoIwVBBvLPO9Xgm3MuysqWWoDCDsS9MDDPlStvwAgjgP3U+89yaTU9Sz4E3uTpQ==
+"@replayio/test-utils@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.2.2.tgz#4b2598472049d0f03d43337db252c178fbc81b0a"
+  integrity sha512-ArMtHrLTMWje+zidMIf1uPH7ek1rctc43DW4lGjU2pHMdWNpsJEUH4QaW/OosAb6zSIEclNS577EBFc9lyPslg==
   dependencies:
-    "@replayio/replay" "^0.17.4"
+    "@replayio/replay" "^0.17.5"
     debug "^4.3.4"
     node-fetch "^2.6.7"
     uuid "^8.3.2"
