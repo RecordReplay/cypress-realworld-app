@@ -71,7 +71,11 @@ module.exports = defineConfig({
     viewportHeight: 1000,
     viewportWidth: 1280,
     setupNodeEvents(on, config) {
-      cypressReplay.default(on, config);
+      on = cypressReplay.wrapOn(on);
+      cypressReplay.default(on, config, {
+        upload: true,
+        apiKey: process.env.REPLAY_API_KEY,
+      });
 
       on("after:run", (afterRun) => {
         const data = JSON.stringify(afterRun.totalDuration);
