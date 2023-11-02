@@ -4102,9 +4102,9 @@
     string.prototype.matchall "^4.0.5"
 
 "@replayio/test-utils@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.2.2.tgz#4b2598472049d0f03d43337db252c178fbc81b0a"
-  integrity sha512-ArMtHrLTMWje+zidMIf1uPH7ek1rctc43DW4lGjU2pHMdWNpsJEUH4QaW/OosAb6zSIEclNS577EBFc9lyPslg==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-1.2.3.tgz#b0e10ec54a41ee0d244413416e3dbd79c11f6303"
+  integrity sha512-JBE/npGDECvReSxfmD9SDmV7nckQmnod1GgFgILTrYebdQ+k/45liwZPnZtWFPhLM6du4ETiI4KbSYF2UE3qLA==
   dependencies:
     "@replayio/replay" "^0.17.5"
     debug "^4.3.4"
