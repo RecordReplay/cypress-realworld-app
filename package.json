@@ -49,6 +49,8 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
+    "@acemarke/react-prod-sourcemaps": "^0.2.1",
+    "@craco/craco": "^6.4.4",
     "@cypress/code-coverage": "^3.10.0-dev.1",
     "@cypress/instrument-cra": "1.4.0",
     "@cypress/react": "^5.10.0",
