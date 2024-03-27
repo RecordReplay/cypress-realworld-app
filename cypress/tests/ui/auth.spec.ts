@@ -1,7 +1,7 @@
 import { User } from "../../../src/models";
 import { isMobile } from "../../support/utils";
 
-// second useless comment
+// Third useless comment
 
 const apiGraphQL = `${Cypress.env("apiUrl")}/graphql`;
 
