@@ -86,7 +86,7 @@ const SignInForm: React.FC<Props> = ({ authService }) => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            setSubmitting(true);
+            // setSubmitting(true);
 
             signInPending(values);
           }}
@@ -143,7 +143,7 @@ const SignInForm: React.FC<Props> = ({ authService }) => {
                 color="primary"
                 className={classes.submit}
                 data-test="signin-submit"
-                disabled={!isValid || isSubmitting}
+                // disabled={!isValid || isSubmitting}
               >
                 Sign In
               </Button>
