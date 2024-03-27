@@ -71,7 +71,6 @@ const UserOnboardingContainer: React.FC<Props> = ({ authService, bankAccountsSer
 
   return null;
 
-
   // return (
   //   <Dialog data-test="user-onboarding-dialog" fullScreen={fullScreen} open={dialogIsOpen}>
   //     <DialogTitle data-test="user-onboarding-dialog-title">
