@@ -6,7 +6,7 @@ import Promise from "bluebird";
 import { percyHealthCheck } from "@percy/cypress/task";
 import codeCoverageTask from "@cypress/code-coverage/task";
 import { defineConfig } from "cypress";
-import "@cypress/instrument-cra";
+// import "@cypress/instrument-cra";
 import { writeFileSync } from "fs";
 const { devServer } = require("@cypress/react/plugins/react-scripts");
 const cypressReplay = require("@replayio/cypress");
