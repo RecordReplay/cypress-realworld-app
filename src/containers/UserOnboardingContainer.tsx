@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import {
-  Button,
-  Box,
-  useTheme,
-  useMediaQuery,
-  Grid,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@material-ui/core";
+// import React, { useEffect } from "react";
+// import {
+//   Button,
+//   Box,
+//   useTheme,
+//   useMediaQuery,
+//   Grid,
+//   Dialog,
+//   DialogActions,
+//   DialogContent,
+//   DialogContentText,
+//   DialogTitle,
+// } from "@material-ui/core";
 import {
   BaseActionObject,
   Interpreter,
@@ -18,15 +18,15 @@ import {
   ServiceMap,
   TypegenDisabled,
 } from "xstate";
-import { isEmpty } from "lodash/fp";
-import { useActor, useMachine } from "@xstate/react";
+// import { isEmpty } from "lodash/fp";
+// import { useActor, useMachine } from "@xstate/react";
 
-import { userOnboardingMachine } from "../machines/userOnboardingMachine";
-import BankAccountForm from "../components/BankAccountForm";
+// import { userOnboardingMachine } from "../machines/userOnboardingMachine";
+// import BankAccountForm from "../components/BankAccountForm";
 import { DataContext, DataEvents, DataSchema } from "../machines/dataMachine";
 import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from "../machines/authMachine";
-import NavigatorIllustration from "../components/SvgUndrawNavigatorA479";
-import PersonalFinance from "../components/SvgUndrawPersonalFinanceTqcd";
+// import NavigatorIllustration from "../components/SvgUndrawNavigatorA479";
+// import PersonalFinance from "../components/SvgUndrawPersonalFinanceTqcd";
 
 export interface Props {
   authService: Interpreter<AuthMachineContext, AuthMachineSchema, AuthMachineEvents, any, any>;
@@ -40,34 +40,34 @@ export interface Props {
 }
 
 const UserOnboardingContainer: React.FC<Props> = ({ authService, bankAccountsService }) => {
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const [bankAccountsState, sendBankAccounts] = useActor(bankAccountsService);
-  const [authState, sendAuth] = useActor(authService);
-  const [userOnboardingState, sendUserOnboarding] = useMachine(userOnboardingMachine);
+  // const theme = useTheme();
+  // const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  // const [bankAccountsState, sendBankAccounts] = useActor(bankAccountsService);
+  // const [authState, sendAuth] = useActor(authService);
+  // const [userOnboardingState, sendUserOnboarding] = useMachine(userOnboardingMachine);
 
-  const currentUser = authState?.context?.user;
+  // const currentUser = authState?.context?.user;
 
-  useEffect(() => {
-    sendBankAccounts("FETCH");
-  }, [sendBankAccounts]);
+  // useEffect(() => {
+  //   sendBankAccounts("FETCH");
+  // }, [sendBankAccounts]);
 
-  const noBankAccounts =
-    bankAccountsState?.matches("success.withoutData") &&
-    isEmpty(bankAccountsState?.context?.results);
+  // const noBankAccounts =
+  //   bankAccountsState?.matches("success.withoutData") &&
+  //   isEmpty(bankAccountsState?.context?.results);
 
-  const dialogIsOpen =
-    (userOnboardingState.matches("stepTwo") && !noBankAccounts) ||
-    (userOnboardingState.matches("stepThree") && !noBankAccounts) ||
-    (!userOnboardingState.matches("done") && noBankAccounts) ||
-    false;
+  // const dialogIsOpen =
+  //   (userOnboardingState.matches("stepTwo") && !noBankAccounts) ||
+  //   (userOnboardingState.matches("stepThree") && !noBankAccounts) ||
+  //   (!userOnboardingState.matches("done") && noBankAccounts) ||
+  //   false;
 
-  const nextStep = () => sendUserOnboarding("NEXT");
+  // const nextStep = () => sendUserOnboarding("NEXT");
 
-  const createBankAccountWithNextStep = (payload: any) => {
-    sendBankAccounts({ type: "CREATE", ...payload });
-    nextStep();
-  };
+  // const createBankAccountWithNextStep = (payload: any) => {
+  //   sendBankAccounts({ type: "CREATE", ...payload });
+  //   nextStep();
+  // };
 
   return null;
 
