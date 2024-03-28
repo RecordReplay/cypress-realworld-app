@@ -82,6 +82,58 @@ module.exports = defineConfig({
         apiKey: process.env.REPLAY_API_KEY,
       });
 
+      const newRecordings = new Set();
+      const uploadedRecordings = new Set();
+
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      async function waitForUploadedRecording(recordingId) {
+        let start = Date.now();
+
+        console.log("Starting upload check for recordingId: ", recordingId);
+
+        while (true) {
+          const now = Date.now();
+          if (now - start > 300000) {
+            throw new Error("Recording did not upload within 5 minutes");
+          }
+          const recordingEntries = listAllRecordings({ all: true });
+          const recordingEntry = recordingEntries.find((entry) => entry.id === recordingId);
+
+          console.log("Recording status: ", recordingEntry.id, recordingEntry.status);
+          if (recordingEntry.status === "uploaded") {
+            uploadedRecordings.add(recordingId);
+            console.log(new Date(), "Making replay public for recordingId: ", recordingId);
+            await makeReplayPublic(process.env.REPLAY_API_KEY, recordingId);
+            console.log(new Date(), "Replay made public for recordingId: ", recordingId);
+            break;
+          } else {
+            await delay(500);
+          }
+        }
+      }
+
+      on("after:spec", async (afterSpec) => {
+        const recordingEntries = listAllRecordings({ all: true });
+
+        for (const recordingEntry of recordingEntries) {
+          if (!newRecordings.has(recordingEntry.id)) {
+            newRecordings.add(recordingEntry.id);
+            waitForUploadedRecording(recordingEntry.id);
+          }
+        }
+
+        // const recordingIds = recordingEntries.map((entry) => entry.id);
+
+        // for (const recordingId of recordingIds) {
+        //   console.log(new Date(), "Making replay public for recordingId: ", recordingId);
+        //   await makeReplayPublic(process.env.REPLAY_API_KEY, recordingId);
+        //   console.log(new Date(), "Replay made public for recordingId: ", recordingId);
+        // }
+      });
+
       on("after:run", async (afterRun) => {
         const data = JSON.stringify(afterRun.totalDuration);
         const filename = "duration.json";
