@@ -34,6 +34,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           runTests: false
+          install-command: yarn --frozen-lockfile --ignore-engines
       # report machine parameters
       - run: yarn cypress info
       - run: node --version

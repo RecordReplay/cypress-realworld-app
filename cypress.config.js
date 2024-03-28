@@ -6,11 +6,11 @@ import Promise from "bluebird";
 import { percyHealthCheck } from "@percy/cypress/task";
 import codeCoverageTask from "@cypress/code-coverage/task";
 import { defineConfig } from "cypress";
-import "@cypress/instrument-cra";
+import { listAllRecordings } from "@replayio/replay";
+// import "@cypress/instrument-cra";
 import { writeFileSync } from "fs";
 const { devServer } = require("@cypress/react/plugins/react-scripts");
 const cypressReplay = require("@replayio/cypress");
-import { listAllRecordings } from "@replayio/replay";
 
 dotenv.config({ path: ".env.local" });
 dotenv.config();
