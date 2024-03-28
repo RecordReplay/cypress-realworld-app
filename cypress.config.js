@@ -10,6 +10,7 @@ import "@cypress/instrument-cra";
 import { writeFileSync } from "fs";
 const { devServer } = require("@cypress/react/plugins/react-scripts");
 const cypressReplay = require("@replayio/cypress");
+import { listAllRecordings } from "@replayio/replay";
 
 dotenv.config({ path: ".env.local" });
 dotenv.config();
@@ -92,6 +93,12 @@ module.exports = defineConfig({
         console.log("cypress-json-results: wrote results to %s", filename);
 
         console.log("All recording ids: ", recordingIds);
+
+        const recordingEntries = listAllRecordings({ all: true });
+        for (const entry of recordingEntries) {
+          const { id, recordingId, status, runtime } = entry;
+          console.log("Replay recording 2: ", { id, recordingId, status, runtime });
+        }
       });
 
       const testDataApiEndpoint = `${config.env.apiUrl}/testData`;
