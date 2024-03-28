@@ -72,9 +72,17 @@ module.exports = defineConfig({
     viewportWidth: 1280,
     setupNodeEvents(on, config) {
       on = cypressReplay.wrapOn(on);
+      const recordingIds = [];
+
       cypressReplay.default(on, config, {
         upload: true,
         apiKey: process.env.REPLAY_API_KEY,
+        filter: (entry) => {
+          const { id, recordingId, status, runtime } = entry;
+          console.log("Replay recording: ", { id, recordingId, status, runtime });
+          recordingIds.push(entry.id);
+          return true;
+        },
       });
 
       on("after:run", (afterRun) => {
@@ -82,6 +90,8 @@ module.exports = defineConfig({
         const filename = "duration.json";
         writeFileSync(filename, data);
         console.log("cypress-json-results: wrote results to %s", filename);
+
+        console.log("All recording ids: ", recordingIds);
       });
 
       const testDataApiEndpoint = `${config.env.apiUrl}/testData`;
