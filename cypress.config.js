@@ -110,7 +110,7 @@ module.exports = defineConfig({
             console.log(new Date(), "Replay made public for recordingId: ", recordingId);
             break;
           } else {
-            await delay(500);
+            await delay(100);
           }
         }
       }
