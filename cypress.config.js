@@ -93,9 +93,9 @@ module.exports = defineConfig({
         const recordingIds = recordingEntries.map((entry) => entry.id);
 
         for (const recordingId of recordingIds) {
-          console.log("Making replay public for recordingId: ", recordingId);
+          console.log(new Date(), "Making replay public for recordingId: ", recordingId);
           await makeReplayPublic(process.env.REPLAY_API_KEY, recordingId);
-          console.log("Replay made public for recordingId: ", recordingId);
+          console.log(new Date(), "Replay made public for recordingId: ", recordingId);
         }
       });
 
