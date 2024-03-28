@@ -17,6 +17,8 @@ dotenv.config();
 
 const awsConfig = require(path.join(__dirname, "./aws-exports-es5.js"));
 
+const graphqlUrl = "https://api.replay.io/v1/graphql";
+
 module.exports = defineConfig({
   projectId: "7s5okt",
   env: {
@@ -78,26 +80,22 @@ module.exports = defineConfig({
       cypressReplay.default(on, config, {
         upload: true,
         apiKey: process.env.REPLAY_API_KEY,
-        filter: (entry) => {
-          const { id, recordingId, status, runtime } = entry;
-          console.log("Replay recording: ", { id, recordingId, status, runtime });
-          recordingIds.push(entry.id);
-          return true;
-        },
       });
 
-      on("after:run", (afterRun) => {
+      on("after:run", async (afterRun) => {
         const data = JSON.stringify(afterRun.totalDuration);
         const filename = "duration.json";
         writeFileSync(filename, data);
         console.log("cypress-json-results: wrote results to %s", filename);
 
-        console.log("All recording ids: ", recordingIds);
-
         const recordingEntries = listAllRecordings({ all: true });
-        for (const entry of recordingEntries) {
-          const { id, recordingId, status, runtime } = entry;
-          console.log("Replay recording 2: ", { id, recordingId, status, runtime });
+
+        const recordingIds = recordingEntries.map((entry) => entry.id);
+
+        for (const recordingId of recordingIds) {
+          console.log("Making replay public for recordingId: ", recordingId);
+          await makeReplayPublic(process.env.REPLAY_API_KEY, recordingId);
+          console.log("Replay made public for recordingId: ", recordingId);
         }
       });
 
@@ -134,3 +132,30 @@ module.exports = defineConfig({
     },
   },
 });
+
+async function makeReplayPublic(apiKey, recordingId) {
+  const variables = {
+    recordingId: recordingId,
+    isPrivate: false,
+  };
+
+  return axios({
+    url: graphqlUrl,
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+    },
+    data: {
+      query: `
+        mutation MakeReplayPublic($recordingId: ID!, $isPrivate: Boolean!) {
+          updateRecordingPrivacy(input: { id: $recordingId, private: $isPrivate }) {
+            success
+          }
+        }
+      `,
+      variables,
+    },
+  }).catch((e) => {
+    logError(e, variables);
+  });
+}
