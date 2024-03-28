@@ -103,7 +103,7 @@ module.exports = defineConfig({
           const recordingEntry = recordingEntries.find((entry) => entry.id === recordingId);
 
           console.log("Recording status: ", recordingEntry.id, recordingEntry.status);
-          if (recordingEntry.status === "uploaded") {
+          if (recordingEntry.status === "uploaded" || recordingEntry.status === "startedUpload") {
             uploadedRecordings.add(recordingId);
             console.log(new Date(), "Making replay public for recordingId: ", recordingId);
             await makeReplayPublic(process.env.REPLAY_API_KEY, recordingId);
