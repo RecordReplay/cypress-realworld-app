@@ -47,11 +47,12 @@ router.post("/login", passport.authenticate("local"), (req: Request, res: Respon
 });
 
 router.post("/logout", (req: Request, res: Response): void => {
-  res.clearCookie("connect.sid");
-  req.logout();
-  req.session!.destroy(function (err) {
-    res.redirect("/");
-  });
+  throw new Error("OOPS");
+  // res.clearCookie("connect.sid");
+  // req.logout();
+  // req.session!.destroy(function (err) {
+  //   res.redirect("/");
+  // });
 });
 
 router.get("/checkAuth", (req, res) => {
