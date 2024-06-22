@@ -14,6 +14,8 @@ on:
 env:
   RECORD_REPLAY_FIREFOX_DOWNLOAD_FILE: ${{ github.event.inputs.firefox-runtime }}
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: ${{ github.event.inputs.chromium-runtime }}
+  RECORD_REPLAY_ENABLE_ASSERTS: 1
+  RECORD_REPLAY_DEPENDENCY_GRAPH_ASSERTS: 1
 
 jobs:
   install:
