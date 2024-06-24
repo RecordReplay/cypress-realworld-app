@@ -26,14 +26,14 @@ jobs:
       - run: yarn types
       # - run: yarn lint
       # - run: yarn test:unit:ci
-      - run: yarn build:ci
+      #- run: yarn build:ci
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
+      # - name: Save build folder
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: build
+      #     if-no-files-found: error
+      #     path: build
 
   ui-chrome-tests:
     timeout-minutes: 15
@@ -49,17 +49,24 @@ jobs:
       # https://github.com/cypress-io/github-action/issues/48
       fail-fast: false
       matrix:
+        react: ["18.2.0", "19.0.0-rc-c21bcd627b-20240624"]
         # run copies of the current job in parallel
         containers: [1, 2, 3, 4, 5]
+    name: "UI Tests - Chrome - React ${{ matrix.react }} ( ${{ matrix.containers }} )"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
+      # - name: Download the build folders
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: build
+      #     path: build
+      - name: Install custom React version
+        run: yarn add react@${{ matrix.react }} react-dom@${{ matrix.react }}
+
+      - name: Build
+        run: yarn build:ci
 
       - name: Node info
         run: node -v
