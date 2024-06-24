@@ -110,6 +110,7 @@ module.exports = defineConfig({
         runTitle = `${commitTitle} (React ${process.env.REACT_VERSION})`;
 
         console.log("Commit title: ", commitTitle, "run title: ", runTitle);
+        process.env.RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE = runTitle;
       }
 
       replayPlugin(on, config, {
