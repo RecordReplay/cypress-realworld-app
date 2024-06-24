@@ -6,7 +6,7 @@ import Promise from "bluebird";
 import { percyHealthCheck } from "@percy/cypress/task";
 import codeCoverageTask from "@cypress/code-coverage/task";
 import { defineConfig } from "cypress";
-import "@cypress/instrument-cra";
+import { listAllRecordings } from "@replayio/replay";
 import { writeFileSync } from "fs";
 const { devServer } = require("@cypress/react/plugins/react-scripts");
 const cypressReplay = require("@replayio/cypress");
@@ -16,8 +16,12 @@ dotenv.config();
 
 const awsConfig = require(path.join(__dirname, "./aws-exports-es5.js"));
 
+const graphqlServer = process.env.CI ? "https://api.replay.io" : "http://localhost:8087";
+const graphqlUrl = `${graphqlServer}/v1/graphql`;
+
 module.exports = defineConfig({
   projectId: "7s5okt",
+  video: false,
   env: {
     apiUrl: "http://localhost:3001",
     mobileViewportWidthBreakpoint: 414,
@@ -72,12 +76,68 @@ module.exports = defineConfig({
     viewportWidth: 1280,
     setupNodeEvents(on, config) {
       on = cypressReplay.wrapOn(on);
+
+      // API key for a test suites workspace to upload to
+      const apiKey = process.env.WORKSPACE_API_KEY;
+      const shouldUploadManually = !process.env.CI;
+
       cypressReplay.default(on, config, {
         upload: true,
-        apiKey: process.env.REPLAY_API_KEY,
+        apiKey: shouldUploadManually ? apiKey : process.env.REPLAY_API_KEY,
       });
 
-      on("after:run", (afterRun) => {
+      const newRecordings = new Set();
+      const uploadedRecordings = new Set();
+
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      async function waitForUploadedRecording(recordingId) {
+        let start = Date.now();
+
+        console.log("Starting upload check for recordingId: ", recordingId);
+
+        while (true) {
+          const now = Date.now();
+          if (now - start > 300000) {
+            throw new Error("Recording did not upload within 5 minutes");
+          }
+
+          let recordingEntries = listAllRecordings({ all: true });
+          let recordingEntry = recordingEntries.find((entry) => entry.id === recordingId);
+
+          console.log("Recording status: ", recordingEntry.id, recordingEntry.status);
+          if (recordingEntry.status === "uploaded" || recordingEntry.status === "startedUpload") {
+            uploadedRecordings.add(recordingId);
+            console.log(new Date(), "Making replay public for recordingId: ", recordingId);
+            await makeReplayPublic(apiKey, recordingId);
+            console.log(new Date(), "Replay made public for recordingId: ", recordingId);
+            break;
+          } else {
+            await delay(100);
+          }
+        }
+      }
+
+      on("after:spec", async (afterSpec) => {
+        if (!shouldUploadManually) {
+          return;
+        }
+
+        const recordingEntries = listAllRecordings({ all: true });
+
+        console.log("All recordings: ", recordingEntries);
+
+        for (const recordingEntry of recordingEntries) {
+          if (!newRecordings.has(recordingEntry.id)) {
+            newRecordings.add(recordingEntry.id);
+            waitForUploadedRecording(recordingEntry.id);
+          }
+        }
+      });
+
+      on("after:run", async (afterRun) => {
         const data = JSON.stringify(afterRun.totalDuration);
         const filename = "duration.json";
         writeFileSync(filename, data);
@@ -117,3 +177,41 @@ module.exports = defineConfig({
     },
   },
 });
+
+function logError(e, variables) {
+  if (e.response) {
+    console.log("Parameters");
+    console.log(JSON.stringify(variables, undefined, 2));
+    console.log("Response");
+    console.log(JSON.stringify(e.response.data, undefined, 2));
+  }
+
+  throw e.message;
+}
+
+async function makeReplayPublic(apiKey, recordingId) {
+  const variables = {
+    recordingId: recordingId,
+    isPrivate: false,
+  };
+
+  return axios({
+    url: graphqlUrl,
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+    },
+    data: {
+      query: `
+        mutation MakeReplayPublic($recordingId: ID!, $isPrivate: Boolean!) {
+          updateRecordingPrivacy(input: { id: $recordingId, private: $isPrivate }) {
+            success
+          }
+        }
+      `,
+      variables,
+    },
+  }).catch((e) => {
+    logError(e, variables);
+  });
+}
