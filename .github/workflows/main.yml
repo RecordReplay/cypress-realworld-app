@@ -83,7 +83,7 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEBUG: "cypress:server:args"
+          DEBUG: "cypress:server:args,replay:cypress:plugin,replay:test-utils:reporter"
           REPLAY_API_KEY: ${{ secrets.REPLAY_API_KEY }}
           REACT_VERSION: ${{ matrix.react }}
           CI: true
