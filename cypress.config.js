@@ -16,10 +16,12 @@ dotenv.config();
 
 const awsConfig = require(path.join(__dirname, "./aws-exports-es5.js"));
 
-const graphqlUrl = "https://api.replay.io/v1/graphql";
+const graphqlServer = process.env.CI ? "https://api.replay.io" : "http://localhost:8087";
+const graphqlUrl = `${graphqlServer}/v1/graphql`;
 
 module.exports = defineConfig({
   projectId: "7s5okt",
+  video: false,
   env: {
     apiUrl: "http://localhost:3001",
     mobileViewportWidthBreakpoint: 414,
@@ -75,9 +77,13 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on = cypressReplay.wrapOn(on);
 
+      // API key for a test suites workspace to upload to
+      const apiKey = process.env.WORKSPACE_API_KEY;
+      const shouldUploadManually = !process.env.CI;
+
       cypressReplay.default(on, config, {
         upload: true,
-        apiKey: process.env.REPLAY_API_KEY,
+        apiKey: shouldUploadManually ? apiKey : process.env.REPLAY_API_KEY,
       });
 
       const newRecordings = new Set();
@@ -97,14 +103,15 @@ module.exports = defineConfig({
           if (now - start > 300000) {
             throw new Error("Recording did not upload within 5 minutes");
           }
-          const recordingEntries = listAllRecordings({ all: true });
-          const recordingEntry = recordingEntries.find((entry) => entry.id === recordingId);
+
+          let recordingEntries = listAllRecordings({ all: true });
+          let recordingEntry = recordingEntries.find((entry) => entry.id === recordingId);
 
           console.log("Recording status: ", recordingEntry.id, recordingEntry.status);
           if (recordingEntry.status === "uploaded" || recordingEntry.status === "startedUpload") {
             uploadedRecordings.add(recordingId);
             console.log(new Date(), "Making replay public for recordingId: ", recordingId);
-            await makeReplayPublic(process.env.REPLAY_API_KEY, recordingId);
+            await makeReplayPublic(apiKey, recordingId);
             console.log(new Date(), "Replay made public for recordingId: ", recordingId);
             break;
           } else {
@@ -114,7 +121,13 @@ module.exports = defineConfig({
       }
 
       on("after:spec", async (afterSpec) => {
+        if (!shouldUploadManually) {
+          return;
+        }
+
         const recordingEntries = listAllRecordings({ all: true });
+
+        console.log("All recordings: ", recordingEntries);
 
         for (const recordingEntry of recordingEntries) {
           if (!newRecordings.has(recordingEntry.id)) {
@@ -164,6 +177,17 @@ module.exports = defineConfig({
     },
   },
 });
+
+function logError(e, variables) {
+  if (e.response) {
+    console.log("Parameters");
+    console.log(JSON.stringify(variables, undefined, 2));
+    console.log("Response");
+    console.log(JSON.stringify(e.response.data, undefined, 2));
+  }
+
+  throw e.message;
+}
 
 async function makeReplayPublic(apiKey, recordingId) {
   const variables = {
