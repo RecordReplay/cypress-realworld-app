@@ -103,10 +103,17 @@ module.exports = defineConfig({
 
       const on = wrapOn(cyOn);
 
+      const runTitle = process.env.COMMIT_TITLE
+        ? `${process.env.COMMIT_TITLE} (React ${process.env.REACT_VERSION})`
+        : undefined;
+
+      console.log("Commit title: ", process.env.COMMIT_TITLE, "run title: ", runTitle);
+
       replayPlugin(on, config, {
         upload: true, // automatically upload your replays to DevTools
 
         apiKey: process.env.REPLAY_API_KEY,
+        runTitle,
       });
 
       const queryDatabase = ({ entity, query }, callback) => {

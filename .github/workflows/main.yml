@@ -51,8 +51,8 @@ jobs:
       matrix:
         react: ["18.2.0", "19.0.0-rc-c21bcd627b-20240624"]
         # run copies of the current job in parallel
-        containers: [1, 2, 3, 4, 5]
-    name: "UI Tests - Chrome - React ${{ matrix.react }} ( ${{ matrix.containers }} )"
+        containers: [1] #[1, 2, 3, 4, 5]
+    name: "UI Tests - React ${{ matrix.react }} (${{ matrix.containers }})"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -65,14 +65,22 @@ jobs:
       - name: Install custom React version
         run: yarn add react@${{ matrix.react }} react-dom@${{ matrix.react }}
 
+      - name: Check React version
+        run: yarn why react
+
       - name: Build
         run: yarn build:ci
 
       - name: Node info
         run: node -v
 
-      - name: __e Dir
-        run: ls /__e
+      # - name: __e Dir
+      #   run: ls /__e
+
+      # Get just the commit title, so we can have a custom run message
+      # determined in the Cypress config: https://stackoverflow.com/a/76513704/62937
+      - name: get_head_commit_title
+        run: echo "commit_title=$(git log --format=%B -n 1 HEAD | head -n 1)" >> $GITHUB_OUTPUT
 
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v6
@@ -95,6 +103,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: "cypress:server:args"
           REPLAY_API_KEY: ${{ secrets.REPLAY_API_KEY }}
+          COMMIT_TITLE: ${{ steps.get_head_commit_title.outputs.commit_title }}
+          REACT_VERSION: ${{ matrix.react }}
 
   # ui-chrome-mobile-tests:
   #   timeout-minutes: 15
