@@ -60,8 +60,8 @@ function SvgCypressLogo(props: any) {
           y2="17.9723"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.0939" stop-color="#58D09E" />
-          <stop offset="0.9883" stop-color="#58D09E" stop-opacity="0" />
+          <stop offset="0.0939" stopColor="#58D09E" />
+          <stop offset="0.9883" stopColor="#58D09E" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_1375_10683"
@@ -71,8 +71,8 @@ function SvgCypressLogo(props: any) {
           y2="44.2092"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.0774" stop-color="#58D09E" />
-          <stop offset="0.7617" stop-color="#1B1E2E" />
+          <stop offset="0.0774" stopColor="#58D09E" />
+          <stop offset="0.7617" stopColor="#1B1E2E" />
         </linearGradient>
       </defs>
     </svg>
