@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import path from "path";
 import _ from "lodash";
 import axios from "axios";
@@ -103,10 +104,20 @@ module.exports = defineConfig({
 
       const on = wrapOn(cyOn);
 
+      let runTitle: string | undefined = undefined;
+      if (process.env.CI || process.env.REACT_VERSION) {
+        const commitTitle = execSync(`git log -1 --pretty="format:%s"`).toString().trim();
+        runTitle = `${commitTitle} (React ${process.env.REACT_VERSION})`;
+
+        console.log("Commit title: ", commitTitle, "run title: ", runTitle);
+        process.env.RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE = runTitle;
+      }
+
       replayPlugin(on, config, {
         upload: true, // automatically upload your replays to DevTools
 
         apiKey: process.env.REPLAY_API_KEY,
+        runTitle,
       });
 
       const queryDatabase = ({ entity, query }, callback) => {

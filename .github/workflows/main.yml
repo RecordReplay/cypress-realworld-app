@@ -23,24 +23,31 @@ jobs:
       - run: yarn types
       #- run: yarn lint
       #- run: yarn test:unit:ci
-      # - run: yarn build:ci
+      #- run: yarn build:ci
 
   ui-chrome-tests:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     needs: install
+    name: "UI Tests - React ${{ matrix.react }}"
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
       # leaving Cypress Cloud hanging ...
       # https://github.com/cypress-io/github-action/issues/48
       fail-fast: false
-      # matrix:
-      #   # run copies of the current job in parallel
-      #   containers: [1, 2, 3, 4, 5]
+      matrix:
+        # TODO Add "19.0.0-rc-c21bcd627b-20240624"
+        react: ["18.2.0"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
 
       - name: Ensure Replay and Replay Browser are installed
         run: npx replayio install
@@ -48,10 +55,13 @@ jobs:
       - name: Node info
         run: node -v
 
-      - name: "Install dependencies"
-        run: yarn install
+      - name: Install deps and custom React version
+        run: yarn add react@${{ matrix.react }} react-dom@${{ matrix.react }}
 
-      - name: "Build client app"
+      - name: Check React version
+        run: yarn why react
+
+      - name: Build client app
         run: yarn build:ci
 
       - name: "UI Tests - Chrome"
@@ -73,8 +83,10 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEBUG: "cypress:server:args"
+          DEBUG: "cypress:server:args,replay:cypress:plugin,replay:test-utils:reporter"
           REPLAY_API_KEY: ${{ secrets.REPLAY_API_KEY }}
+          REACT_VERSION: ${{ matrix.react }}
+          CI: true
 
   # ui-chrome-mobile-tests:
   #   timeout-minutes: 15
