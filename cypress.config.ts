@@ -107,10 +107,15 @@ module.exports = defineConfig({
       let runTitle: string | undefined = undefined;
       if (process.env.CI || process.env.REACT_VERSION) {
         const commitTitle = execSync(`git log -1 --pretty="format:%s"`).toString().trim();
-        runTitle = `${commitTitle} (React ${process.env.REACT_VERSION})`;
+        const reactVersion = process.env.REACT_VERSION!;
+        runTitle = `${commitTitle} (React ${reactVersion})`;
 
         console.log("Commit title: ", commitTitle, "run title: ", runTitle);
         process.env.RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE = runTitle;
+        const commitHash = process.env.GITHUB_SHA!;
+        const runId = `${commitHash}-${reactVersion}`;
+        // Force the UI to treat these as separate runs
+        process.env.REPLAY_METADATA_TEST_RUN_ID = runId;
       }
 
       replayPlugin(on, config, {
