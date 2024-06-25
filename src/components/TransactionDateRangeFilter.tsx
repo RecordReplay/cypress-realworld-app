@@ -76,6 +76,7 @@ const TransactionListDateRangeFilter: React.FC<TransactionListDateRangeFilterPro
     return `${formatButtonDate(dateRangeStart!)} - ${formatButtonDate(dateRangeEnd!)}`;
   };
 
+  // REPLAY Disable calendar usage because it uses string refs, which break in React 19
   return (
     <Root>
       {!queryHasDateFields && (
@@ -102,7 +103,7 @@ const TransactionListDateRangeFilter: React.FC<TransactionListDateRangeFilterPro
           }}
         />
       )}
-      {!xsBreakpoint && (
+      {false && ( //!xsBreakpoint && (
         <Popover
           id={dateRangeId}
           open={dateRangeOpen}
@@ -143,7 +144,7 @@ const TransactionListDateRangeFilter: React.FC<TransactionListDateRangeFilterPro
           />
         </Popover>
       )}
-      {xsBreakpoint && (
+      {false && ( // xsBreakpoint && (
         <Drawer
           id={dateRangeId}
           open={dateRangeOpen}
