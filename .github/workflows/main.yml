@@ -37,8 +37,7 @@ jobs:
       # https://github.com/cypress-io/github-action/issues/48
       fail-fast: false
       matrix:
-        # TODO Add "19.0.0-rc-c21bcd627b-20240624"
-        react: ["18.2.0", "19.0.0-rc-c21bcd627b-20240624"]
+        react: ["18.2.0", "0.0.0-experimental-03d6f7cf0-20240209", "19.0.0-rc-c21bcd627b-20240624"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
