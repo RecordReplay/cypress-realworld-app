@@ -3,10 +3,8 @@ import { styled } from "@mui/material/styles";
 import { get } from "lodash/fp";
 import { useTheme, useMediaQuery, Divider } from "@mui/material";
 import { VariableSizeList as List } from "react-window";
-// import { InfiniteLoader, List, Index } from "react-virtualized";
 // @ts-ignore
 import InfiniteLoader from "react-window-infinite-loader";
-// import "react-virtualized/styles.css"; // only needs to be imported once
 
 import TransactionItem from "./TransactionItem";
 import { TransactionResponseItem, TransactionPagination } from "../models";
