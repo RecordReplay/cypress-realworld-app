@@ -215,7 +215,6 @@ describe("Transaction Feed", function () {
     });
   });
 
-  REPLAY Disable because `react-infinite-calendar` doesn't work in React 19
   describe("filters transaction feeds by date range", function () {
     if (isMobile()) {
       it("closes date range picker modal", () => {
