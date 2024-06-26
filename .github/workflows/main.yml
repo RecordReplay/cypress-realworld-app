@@ -86,6 +86,7 @@ jobs:
           REPLAY_API_KEY: ${{ secrets.REPLAY_API_KEY }}
           REACT_VERSION: ${{ matrix.react }}
           CI: true
+          RECORD_REPLAY_ENABLE_ASSERTS: 1
 
   # ui-chrome-mobile-tests:
   #   timeout-minutes: 15
