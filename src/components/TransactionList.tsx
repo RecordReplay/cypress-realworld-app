@@ -10,6 +10,8 @@ import EmptyList from "./EmptyList";
 import TransactionInfiniteList from "./TransactionInfiniteList";
 import TransferMoneyIllustration from "./SvgUndrawTransferMoneyRywa";
 
+// Dummy comment 1
+
 const PREFIX = "TransactionList";
 
 const classes = {
