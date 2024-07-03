@@ -50,7 +50,7 @@ jobs:
           cache: "yarn"
 
       - name: Ensure Replay and Replay Browser are installed
-        run: npx replayio install
+        run: npx replayio@1.4.3 install
 
       - name: Node info
         run: node -v
