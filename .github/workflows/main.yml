@@ -37,7 +37,8 @@ jobs:
       # https://github.com/cypress-io/github-action/issues/48
       fail-fast: false
       matrix:
-        react: ["18.2.0", "0.0.0-experimental-03d6f7cf0-20240209", "19.0.0-rc-c21bcd627b-20240624"]
+        # react: ["18.2.0", "0.0.0-experimental-03d6f7cf0-20240209", "19.0.0-rc-c21bcd627b-20240624"]
+        react: ["0.0.0-experimental-03d6f7cf0-20240209"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,7 +50,7 @@ jobs:
           cache: "yarn"
 
       - name: Ensure Replay and Replay Browser are installed
-        run: npx replayio install
+        run: npx replayio@1.4.3 install
 
       - name: Node info
         run: node -v

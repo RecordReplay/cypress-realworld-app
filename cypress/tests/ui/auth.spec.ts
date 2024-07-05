@@ -3,6 +3,8 @@ import { isMobile } from "../../support/utils";
 
 const apiGraphQL = `${Cypress.env("apiUrl")}/graphql`;
 
+// Useless comment 1
+
 describe("User Sign-up and Login", function () {
   beforeEach(function () {
     cy.task("db:seed");
