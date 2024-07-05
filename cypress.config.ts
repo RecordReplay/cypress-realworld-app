@@ -26,9 +26,7 @@ try {
 
 module.exports = defineConfig({
   projectId: "7s5okt",
-  retries: {
-    runMode: 2,
-  },
+  retries: 0,
   env: {
     apiUrl: "http://localhost:3001",
     mobileViewportWidthBreakpoint: 414,
